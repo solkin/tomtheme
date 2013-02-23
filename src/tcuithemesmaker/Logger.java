@@ -6,7 +6,7 @@ package tcuithemesmaker;
  */
 public class Logger {
 
-    public static void println(String line) {
-        // System.out.println(line);
-    }
+  public static void println( String line ) {
+    // System.out.println(line);
+  }
 }

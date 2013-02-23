@@ -292,7 +292,7 @@ public class MainFrame extends javax.swing.JFrame {
     });
     jToolBar4.add(jButton12);
 
-    jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_theme_info.png"))); // NOI18N
+    jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_info.png"))); // NOI18N
     jButton18.setText("Инфо о теме");
     jButton18.setFocusable(false);
     jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -390,7 +390,7 @@ public class MainFrame extends javax.swing.JFrame {
           .addGroup(layout.createSequentialGroup()
             .addGap(56, 56, 56)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-              .addComponent(jToolBar2, javax.swing.GroupLayout.PREFERRED_SIZE, 134, Short.MAX_VALUE)
+              .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
               .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
               .addComponent(jToolBar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         .addGap(10, 10, 10)
@@ -611,10 +611,9 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-      // DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
       JTable jTable = ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
       for ( int c = 0; c < colorBuffer.length; c++ ) {
-        setColorTo(jTable.getSelectedRow() + c, colorBuffer[c]);
+        setColorTo( jTable.getSelectedRow() + c, colorBuffer[c] );
       }
     }//GEN-LAST:event_jButton17ActionPerformed
 
@@ -674,8 +673,8 @@ public class MainFrame extends javax.swing.JFrame {
         jTable1.setModel( new javax.swing.table.DefaultTableModel(
                 new Object[][] {},
                 new String[] {
-                  "Описание", "Цвет"
-                } ) {
+          "Описание", "Цвет"
+        } ) {
           Class[] types = new Class[] {
             java.lang.String.class, java.awt.Color.class
           };
@@ -871,25 +870,12 @@ public class MainFrame extends javax.swing.JFrame {
          } catch ( Throwable ex ) {
          }*/
         try {
-          UIManager.setLookAndFeel( "com.lipstikLF.LipstikLookAndFeel" );
+          // UIManager.setLookAndFeel( "com.lipstikLF.LipstikLookAndFeel" );
+          UIManager.setLookAndFeel( "com.pagosoft.plaf.PgsLookAndFeel" );
         } catch ( Throwable ex ) {
         }
         mainFrame = new MainFrame();
         mainFrame.setVisible( true );
-        /*try
-         {
-         OutputStream os = new java.io.FileOutputStream(new File("tcuilite_def.tth"));
-         try
-         {
-         ThemeMaker.defaultTheme(new DataOutputStream(os));
-         } catch (IOException ex)
-         {
-         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-         }
-         } catch (FileNotFoundException ex)
-         {
-         Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
-         }*/
       }
     } );
   }

@@ -15,7 +15,7 @@ public class ThemeMaker {
     writeUTF( dos, "Default" );
     writeUTF( dos, "TomClaw Software" );
     /** Blocks count **/
-    writeChar(dos, 15);
+    writeChar( dos, 15 );
     /** Button **/
     int[] button = new int[] { 0xBDBABD,
       0xADAAAD,

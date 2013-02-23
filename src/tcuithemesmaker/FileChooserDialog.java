@@ -19,10 +19,8 @@ public class FileChooserDialog extends javax.swing.JDialog {
   public int mode;
   public String defaultFileName = "";
 
-  ;
-
-    /** Creates new form FileChooserDialog */
-    public FileChooserDialog( java.awt.Frame parent, boolean modal, int mode, String defaultFileName ) {
+  /** Creates new form FileChooserDialog */
+  public FileChooserDialog( java.awt.Frame parent, boolean modal, int mode, String defaultFileName ) {
     super( parent, modal );
     this.defaultFileName = defaultFileName;
     this.mode = mode;
@@ -74,7 +72,7 @@ public class FileChooserDialog extends javax.swing.JDialog {
         } else if ( mode == MODE_SAVE ) {
           MainFrame.mainFrame.saveTheme( jFileChooser1.getSelectedFile().getPath() );
         } else if ( mode == MODE_SCRN ) {
-          MainFrame.mainFrame.makeScreenShot(jFileChooser1.getSelectedFile().getPath() );
+          MainFrame.mainFrame.makeScreenShot( jFileChooser1.getSelectedFile().getPath() );
         }
       }
       dispose();
