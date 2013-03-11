@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Hashtable;
 
 /**
- * Solkin Igor Viktorovich, TomClaw Software, 2003-2012
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
  * http://www.tomclaw.com/
  * @author Solkin
  */
@@ -33,7 +33,7 @@ public class Localization  {
      * Default String is returned from getMessage() methods when there is any problem
      * with finding the appropriate localized message or any part of it.
      */    
-    private static final String _DEFAULT_STRING = "???";
+    public static final String _DEFAULT_STRING = "???";
     
     
     /**

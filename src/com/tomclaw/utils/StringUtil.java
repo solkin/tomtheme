@@ -9,7 +9,7 @@ import java.util.Vector;
 import javax.microedition.lcdui.Font;
 
 /**
- * Solkin Igor Viktorovich, TomClaw Software, 2003-2010
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
  * http://www.tomclaw.com/
  * @author Игорь
  */
@@ -19,7 +19,7 @@ public class StringUtil {
   public static final String S_EMPTY = "";
   public static final String S_NULL = "null";
 
-  public static String byteArrayDirectToString(byte[] str) {
+  public static String byteArrayDirectToString( byte[] str ) {
     String outString = "";
     for ( int c = 0; c < str.length; c++ ) {
       outString += ( char ) str[c];
@@ -27,12 +27,11 @@ public class StringUtil {
     return outString;
   }
 
-  public static String ipToString(byte[] ip) {
+  public static String ipToString( byte[] ip ) {
     if ( ip == null ) {
       return null;
     }
     StringBuffer strIP = new StringBuffer();
-
     for ( int i = 0; i < 4; i++ ) {
       int tmp = ( int ) ip[i] & 0xFF;
       if ( strIP.length() != 0 ) {
@@ -40,19 +39,19 @@ public class StringUtil {
       }
       strIP.append( tmp );
     }
-
     return strIP.toString();
   }
 
   /**
-   Concatenate vector entries using
-   empty string separator.
+   * Concatenate vector entries using empty string separator.
+   * @param v
+   * @return String
    */
-  public static String concat(java.util.Vector v) {
+  public static String concat( java.util.Vector v ) {
     return concat( v, S_EMPTY );
   }
 
-  public static String concat(java.util.Vector v, String separator) {
+  public static String concat( java.util.Vector v, String separator ) {
     synchronized ( v ) {
       java.util.Enumeration e = v.elements();
       StringBuffer sb = new StringBuffer();
@@ -66,35 +65,35 @@ public class StringUtil {
     }
   }
 
-  public static boolean isEmptyOrNull(String s) {
+  public static boolean isEmptyOrNull( String s ) {
     return isNullOrEmpty( s );
   }
 
-  public static boolean isNullOrEmpty(String s) {
+  public static boolean isNullOrEmpty( String s ) {
     return s == null || s.length() == 0;
   }
 
-  public static boolean isNullOrTrimmedEmpty(String s) {
+  public static boolean isNullOrTrimmedEmpty( String s ) {
     return s == null || s.trim().length() == 0;
   }
 
-  public static boolean isTrimmedEmptyOrNull(String s) {
+  public static boolean isTrimmedEmptyOrNull( String s ) {
     return isNullOrTrimmedEmpty( s );
   }
 
-  public static String mkEmpty(String s) {
+  public static String mkEmpty( String s ) {
     return s == null ? S_EMPTY : s;
   }
 
-  public static String mkEmptyAndTrim(String s) {
+  public static String mkEmptyAndTrim( String s ) {
     return s == null ? S_EMPTY : s.trim();
   }
 
-  public static String mkNull(String s) {
+  public static String mkNull( String s ) {
     return s == null ? null : ( s.length() == 0 ? null : s );
   }
 
-  public static String mkNullAndTrim(String s) {
+  public static String mkNullAndTrim( String s ) {
     if ( s == null ) {
       return null;
     } else {
@@ -104,14 +103,16 @@ public class StringUtil {
   }
 
   /**
-   Concatenate vector entries using
-   empty string separator.
+   * Concatenate vector entries using empty string separator.
+   * @param s
+   * @param prefix
+   * @return boolean
    */
-  public static boolean startsWith(String s, String prefix) {
+  public static boolean startsWith( String s, String prefix ) {
     return s.length() >= prefix.length() && s.startsWith( prefix );
   }
 
-  public static String toPrintableString(Object object) {
+  public static String toPrintableString( Object object ) {
     if ( object == null ) {
       return "null";
     } else {
@@ -119,8 +120,14 @@ public class StringUtil {
     }
   }
 
-  // Check is data array utf-8 string
-  public static boolean isDataUTF8(byte[] array, int start, int length) {
+  /**
+   * Check is data array utf-8 string
+   * @param array
+   * @param start
+   * @param length
+   * @return boolean
+   */
+  public static boolean isDataUTF8( byte[] array, int start, int length ) {
     if ( length == 0 ) {
       return false;
     }
@@ -172,8 +179,12 @@ public class StringUtil {
     return true;
   }
 
-  // Converts an Unicode string into CP1251 byte array
-  public static byte[] stringToByteArray1251(String s) {
+  /**
+   * Converts an Unicode string into CP1251 byte array
+   * @param s
+   * @return byte[]
+   */
+  public static byte[] stringToByteArray1251( String s ) {
     byte abyte0[] = s.getBytes();
     char c;
     for ( int i = 0; i < s.length(); i++ ) {
@@ -224,8 +235,12 @@ public class StringUtil {
     return abyte0;
   }
 
-  // Converts an CP1251 byte array into an Unicode string
-  public static byte[] string1251ToByteArray(String string) {
+  /**
+   * Converts an CP1251 byte array into an Unicode string
+   * @param string
+   * @return byte[]
+   */
+  public static byte[] string1251ToByteArray( String string ) {
     byte[] data = new byte[ string.length() * 2 ];
     int l;
     for ( int k = 0; k < string.length(); k++ ) {
@@ -292,8 +307,14 @@ public class StringUtil {
     return data;
   }
 
-  // Converts an CP1251 byte array into an Unicode string
-  public static String byteArray1251ToString(byte abyte0[], int i, int j) {
+  /**
+   * Converts an CP1251 byte array into an Unicode string
+   * @param abyte0
+   * @param i
+   * @param j
+   * @return String
+   */
+  public static String byteArray1251ToString( byte abyte0[], int i, int j ) {
     StringBuffer stringbuffer = new StringBuffer( j );
     int l;
     for ( int k = 0; k < j; k++ ) {
@@ -349,8 +370,12 @@ public class StringUtil {
     return stringbuffer.toString();
   }
 
-  // Removes all CR occurences
-  public static String removeCr(String val) {
+  /**
+   * Removes all CR occurences
+   * @param val
+   * @return String
+   */
+  public static String removeCr( String val ) {
     StringBuffer result = new StringBuffer();
     for ( int i = 0; i < val.length(); i++ ) {
       char chr = val.charAt( i );
@@ -362,8 +387,15 @@ public class StringUtil {
     return result.toString();
   }
 
-  // Extract a UCS-2BE string from the specified buffer (buf) starting at position off, ending at position off+len
-  public static String ucs2beByteArrayToString(byte[] buf, int off, int len) {
+  /**
+   * Extract a UCS-2BE string from the specified buffer (buf) starting at 
+   * position off, ending at position off+len
+   * @param buf
+   * @param off
+   * @param len
+   * @return String
+   */
+  public static String ucs2beByteArrayToString( byte[] buf, int off, int len ) {
 
     // Length check
     if ( ( off + len > buf.length ) || ( len % 2 != 0 ) ) {
@@ -379,12 +411,16 @@ public class StringUtil {
 
   }
 
-  // Extracts a UCS-2BE string from the specified buffer (buf)
-  public static String ucs2beByteArrayToString(byte[] buf) {
+  /**
+   * Extracts a UCS-2BE string from the specified buffer (buf)
+   * @param buf
+   * @return String
+   */
+  public static String ucs2beByteArrayToString( byte[] buf ) {
     return ( ucs2beByteArrayToString( buf, 0, buf.length ) );
   }
 
-  public static byte[] stringToUcs2beByteArray(String string) {
+  public static byte[] stringToUcs2beByteArray( String string ) {
     byte[] data = new byte[ string.length() * 2 ];
     for ( int c = 0; c < string.length(); c++ ) {
       DataUtil.put16( data, c * 2, string.charAt( c ) );
@@ -392,9 +428,17 @@ public class StringUtil {
     return data;
   }
 
-  // Extracts a string from the buffer (buf) starting at position off, ending at position off+len
-  public static String byteArrayToString(byte[] buf, int off, int len,
-          boolean utf8) {
+  /**
+   * Extracts a string from the buffer (buf) starting at position off, 
+   * ending at position off+len
+   * @param buf
+   * @param off
+   * @param len
+   * @param utf8
+   * @return String
+   */
+  public static String byteArrayToString( byte[] buf, int off, int len,
+          boolean utf8 ) {
 
     // Length check
     if ( buf.length < off + len ) {
@@ -430,23 +474,42 @@ public class StringUtil {
 
   }
 
-  // Extracts a string from the buffer (buf) starting at position off, ending at position off+len
-  public static String byteArrayToString(byte[] buf, int off, int len) {
+  /**
+   * Extracts a string from the buffer (buf) starting at position off, ending at position off+len
+   * @param buf
+   * @param off
+   * @param len
+   * @return String
+   */
+  public static String byteArrayToString( byte[] buf, int off, int len ) {
     return ( byteArrayToString( buf, off, len, false ) );
   }
 
-  // Converts the specified buffer (buf) to a string
-  public static String byteArrayToString(byte[] buf, boolean utf8) {
+  /**
+   * Converts the specified buffer (buf) to a string
+   * @param buf
+   * @param utf8
+   * @return String
+   */
+  public static String byteArrayToString( byte[] buf, boolean utf8 ) {
     return ( byteArrayToString( buf, 0, buf.length, utf8 ) );
   }
 
-  // Converts the specified buffer (buf) to a string
-  public static String byteArrayToString(byte[] buf) {
+  /**
+   * Converts the specified buffer (buf) to a string
+   * @param buf
+   * @return String
+   */
+  public static String byteArrayToString( byte[] buf ) {
     return ( byteArrayToString( buf, 0, buf.length, false ) );
   }
 
-  // Converts the specific 4 byte max buffer to an unsigned long
-  public static long byteArrayToLong(byte[] b) {
+  /**
+   * Converts the specific 4 byte max buffer to an unsigned long
+   * @param b
+   * @return long
+   */
+  public static long byteArrayToLong( byte[] b ) {
     long l = 0;
     l |= b[0] & 0xFF;
     l <<= 8;
@@ -460,8 +523,12 @@ public class StringUtil {
     return l;
   }
 
-  // Converts a byte array to a hex string
-  public static String byteArrayToHexString(byte[] buf) {
+  /**
+   * Converts a byte array to a hex string
+   * @param buf
+   * @return String
+   */
+  public static String byteArrayToHexString( byte[] buf ) {
     StringBuffer hexString = new StringBuffer( buf.length );
     String hex;
     for ( int i = 0; i < buf.length; i++ ) {
@@ -471,8 +538,13 @@ public class StringUtil {
     return hexString.toString();
   }
 
-  // Converts the specified string (val) to a byte array
-  public static byte[] stringToByteArray(String val, boolean utf8) {
+  /**
+   * Converts the specified string (val) to a byte array
+   * @param val
+   * @param utf8
+   * @return byte[]
+   */
+  public static byte[] stringToByteArray( String val, boolean utf8 ) {
     // Write string in UTF-8 format
     if ( utf8 ) {
       try {
@@ -497,56 +569,84 @@ public class StringUtil {
     }
   }
 
-  // Converts the specified string (val) to a byte array
-  public static byte[] stringToByteArray(String val) {
+  /**
+   * Converts the specified string (val) to a byte array
+   * @param val
+   * @return byte[]
+   */
+  public static byte[] stringToByteArray( String val ) {
     return ( stringToByteArray( val, false ) );
   }
 
-  public static boolean isFill(String textData) {
-    boolean isFill = false;
-    for ( int c = 0; c < textData.length(); c++ ) {
-      if ( textData.charAt( c ) != ' ' ) {
-        isFill = true;
-        break;
+  /**
+   * Checks specified String contains anything but spaces
+   * @param textData
+   * @return boolean
+   */
+  public static boolean isFill( String textData ) {
+    if ( textData != null ) {
+      for ( int c = 0; c < textData.length(); c++ ) {
+        if ( textData.charAt( c ) != ' ' ) {
+          return true;
+        }
       }
     }
-    return isFill;
+    return false;
   }
 
-  public static String toXmlWellFormed(String string) {
+  /**
+   * Escaping special XML symbols in specified String
+   * @param string
+   * @return String
+   */
+  public static String toXmlWellFormed( String string ) {
     LogUtil.outMessage( "To XML well formed" );
     String[] symbols = new String[]{ "&", "<", ">", "'", "\"" };
-    String[] replace = new String[]{ "&amp;", "&lt;", "&gt;", "&apos;", "&quot;" };
+    String[] replace = new String[]{ "&amp;", "&lt;", "&gt;", "&apos;",
+      "&quot;" };
     int location = 0;
     for ( int c = 0; c < symbols.length; c++ ) {
       location = string.indexOf( symbols[c], location );
       if ( location >= 0 ) {
-        string = string.substring( 0, location ).concat( replace[c] ).concat( string.substring( location + 1 ) );
+        string = string.substring( 0, location ).concat( replace[c] )
+                .concat( string.substring( location + 1 ) );
         location += replace[c].length();
         c--;
         continue;
       }
       location = 0;
     }
-    LogUtil.outMessage( "Formed" );
     return string;
   }
 
-  public static String toStringFromXmlWellFormed(String string) {
-    String[] symbols = new String[]{ "&amp;", "&lt;", "&gt;", "&apos;", "&quot;" };
+  /**
+   * Unescaping special XML symbols from specified String
+   * @param string
+   * @return String
+   */
+  public static String toStringFromXmlWellFormed( String string ) {
+    String[] symbols = new String[]{ "&amp;", "&lt;", "&gt;", "&apos;",
+      "&quot;" };
     String[] replace = new String[]{ "&", "<", ">", "'", "\"" };
     int location;
     for ( int c = 0; c < symbols.length; c++ ) {
       location = string.indexOf( symbols[c], 0 );
       if ( location >= 0 ) {
-        string = string.substring( 0, location ).concat( replace[c] ).concat( string.substring( location + symbols[c].length() ) );
+        string = string.substring( 0, location ).concat( replace[c] )
+                .concat( string.substring( location + symbols[c].length() ) );
         c--;
       }
     }
     return string;
   }
 
-  public static String generateString(int length) {
+  /**
+   * Generates randim string, contains only specified count of symbols: 
+   * abdefhiknrstyzABDEFGHKNQRSTYZ23456789
+   * @param length
+   * @return String
+   */
+  public static String generateString( int length ) {
     String resultString = "";
     String symbols = "abdefhiknrstyzABDEFGHKNQRSTYZ23456789";
     Random random = new Random();
@@ -562,24 +662,57 @@ public class StringUtil {
     return resultString;
   }
 
-  public static String getWin1251(byte[] encodedString) {
-    StringBuffer decodedString = new StringBuffer();
-    int ch;
-    for ( int c = 0; c < encodedString.length; c += 2 ) {
-      //ch = DataUtil.get8(encodedString, c);
-      ch = DataUtil.get16_reversed( encodedString, c );
-      decodedString.append( ( char ) ch );
+  /**
+   * Extract a UCS-2LE string from the specified buffer (buf) starting at 
+   * position off, ending at position off+len
+   * @param buf
+   * @param off
+   * @param len
+   * @return String
+   */
+  public static String ucs2leByteArrayToString( byte[] buf, int off, int len ) {
 
+    // Length check
+    if ( ( off + len > buf.length ) || ( len % 2 != 0 ) ) {
+      return ( null );
     }
-    return decodedString.toString();
+
+    // Convert
+    StringBuffer sb = new StringBuffer();
+    for ( int i = off; i < off + len; i += 2 ) {
+      sb.append( ( char ) DataUtil.get16_reversed( buf, i ) );
+    }
+    return ( sb.toString() );
+
   }
 
-  public static int determEncoding(byte[] data) {
+  /**
+   * Extracts a UCS-2LE string from the specified buffer (buf)
+   * @param buf
+   * @return String
+   */
+  public static String ucs2leByteArrayToString( byte[] buf ) {
+    return ( ucs2leByteArrayToString( buf, 0, buf.length ) );
+  }
+
+  public static byte[] stringToUcs2leByteArray( String string ) {
+    byte[] data = new byte[ string.length() * 2 ];
+    for ( int c = 0; c < string.length(); c++ ) {
+      DataUtil.put16_reversed( data, c * 2, string.charAt( c ) );
+    }
+    return data;
+  }
+
+  /**
+   * Determs encoding (UCS2 or WIN1251)
+   * @param data
+   * @return 0x01 in case of ucs2 or 0x02 in case of win1251
+   */
+  public static int determEncoding( byte[] data ) {
     int encIndex = 0x02;
     for ( int c = 0; c < data.length; c++ ) {
       if ( ( c + 1 ) % 2 == 0 ) {
         if ( data[c] >= 0 && data[c] <= 10 ) {
-          // LogUtil.outMessage("data[c]="+data[c]);
           encIndex = 0x01; // ucs2
         } else {
           encIndex = 0x02; // win1251
@@ -587,16 +720,32 @@ public class StringUtil {
         }
       }
     }
-    LogUtil.outMessage( "Det. enc.: " + encIndex );
     return encIndex;
   }
 
-  public static String[] wrapText(String text, int width, Font font) {
+  /**
+   * Wrapping text for special font and width
+   * @param text
+   * @param width
+   * @param font
+   * @return String[]
+   */
+  public static String[] wrapText( String text, int width, Font font ) {
     return wrapText( text, width, font, false );
   }
 
-  public static String[] wrapText(String text, int width, Font font, boolean isHidden) {
+  /**
+   * Wrapping text for special font and width
+   * @param text
+   * @param width
+   * @param font
+   * @param isHidden
+   * @return String[]
+   */
+  public static String[] wrapText( String text, int width, Font font,
+          boolean isHidden ) {
     int length = text.length();
+    /** FOr password use only **/
     if ( isHidden ) {
       text = "";
       for ( int c = 0; c < length; c++ ) {
@@ -604,6 +753,7 @@ public class StringUtil {
       }
     }
     Vector strings = new Vector();
+    /** Checking for string is short **/
     if ( font.stringWidth( text ) <= width ) {
       strings.addElement( text );
       String[] anArray = new String[ 1 ];
@@ -620,7 +770,8 @@ public class StringUtil {
         if ( text.charAt( c ) == '\n' ) {
           prevBrSymLoc = -1;
         } else {
-          prevBrSymLoc = Math.max( subString.lastIndexOf( ' ' ), subString.lastIndexOf( '.' ) );
+          prevBrSymLoc = Math.max( subString.lastIndexOf( ' ' ), subString
+                  .lastIndexOf( '.' ) );
           prevBrSymLoc = Math.max( prevBrSymLoc, subString.lastIndexOf( ',' ) );
           prevBrSymLoc = Math.max( prevBrSymLoc, subString.lastIndexOf( ';' ) );
           prevBrSymLoc = Math.max( prevBrSymLoc, subString.lastIndexOf( ':' ) );
@@ -631,17 +782,19 @@ public class StringUtil {
           prevBrSymLoc = Math.max( prevBrSymLoc, subString.lastIndexOf( '\n' ) );
         }
         if ( prevBrSymLoc == -1 ) {
-          strings.addElement( subString );
-          offset += subString.length();
+          strings.addElement( subString.trim() );
+          offset += subString.length() + 1;
         } else {
           prevBrSymLoc++;
-          strings.addElement( subString.substring( 0, prevBrSymLoc ) );
+          strings.addElement( subString.substring( 0, prevBrSymLoc ).trim() );
+          /** Increasing offset **/
           offset += prevBrSymLoc;
+          /** Decreasing string pointer **/
           c -= subString.length() - prevBrSymLoc;
         }
       } else if ( c == text.length() - 1 ) {
         subString = text.substring( offset );
-        strings.addElement( subString );
+        strings.addElement( subString.trim() );
         break;
       }
     }
@@ -650,10 +803,18 @@ public class StringUtil {
     return anArray;
   }
 
-  public static String replace(String where, String what, String with) {
+  /**
+   * Replacing substing in string
+   * @param where
+   * @param what
+   * @param with
+   * @return String
+   */
+  public static String replace( String where, String what, String with ) {
     int index = -with.length();
     while ( ( index = where.indexOf( what, index + with.length() ) ) != -1 ) {
-      where = where.substring( 0, index ) + with + where.substring( index + what.length() );
+      where = where.substring( 0, index ) + with + where.substring( index
+              + what.length() );
     }
     return where;
   }

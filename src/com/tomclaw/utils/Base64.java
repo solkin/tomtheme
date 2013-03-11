@@ -1,18 +1,23 @@
 package com.tomclaw.utils;
 
 /**
- *
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
+ * http://www.tomclaw.com/
  * @author Игорь
  */
 public class Base64 {
 
   static private final char[] ALPHABET;
   static private final int[] valueDecoding;
-  
+
   static {
     int i;
     int i1;
-    char[] ALPHABET__ = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 43, 47 };
+    char[] ALPHABET__ = { 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77,
+      78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 97, 98, 99, 100, 101,
+      102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115,
+      116, 117, 118, 119, 120, 121, 122, 48, 49, 50, 51, 52, 53, 54, 55, 56,
+      57, 43, 47 };
     ALPHABET = ALPHABET__;
     valueDecoding = new int[ 128 ];
     i = 0;
@@ -27,7 +32,7 @@ public class Base64 {
     }
   }
 
-  static public String encode(byte[] data, int offset, int length) {
+  static public String encode( byte[] data, int offset, int length ) {
     int i;
     int encodedLen;
     char[] encoded;
@@ -43,7 +48,8 @@ public class Base64 {
     return new String( encoded );
   }
 
-  static private void encodeQuantum(byte[] in, int inOffset, int len, char[] out, int outOffset) {
+  static private void encodeQuantum( byte[] in, int inOffset, int len,
+          char[] out, int outOffset ) {
     byte a;
     byte b = 0;
     byte c = 0;
@@ -67,11 +73,12 @@ public class Base64 {
     }
   }
 
-  static public byte[] decode(String encoded) throws java.io.IOException {
+  static public byte[] decode( String encoded ) throws java.io.IOException {
     return Base64.decode( encoded, 0, encoded.length() );
   }
 
-  static public byte[] decode(String encoded, int offset, int length) throws java.io.IOException {
+  static public byte[] decode( String encoded, int offset, int length )
+          throws java.io.IOException {
     int i;
     int decodedLen;
     byte[] decoded;
@@ -89,14 +96,18 @@ public class Base64 {
     i = 0;
     decodedLen = 0;
     while ( i < length ) {
-      Base64.decodeQuantum( encoded.charAt( offset + i ), encoded.charAt( ( offset + i ) + 1 ), encoded.charAt( ( offset + i ) + 2 ), encoded.charAt( ( offset + i ) + 3 ), decoded, decodedLen );
+      Base64.decodeQuantum( encoded.charAt( offset + i ),
+              encoded.charAt( ( offset + i ) + 1 ),
+              encoded.charAt( ( offset + i ) + 2 ),
+              encoded.charAt( ( offset + i ) + 3 ), decoded, decodedLen );
       i += 4;
       decodedLen += 3;
     }
     return decoded;
   }
 
-  static private void decodeQuantum(char in1, char in2, char in3, char in4, byte[] out, int outOffset) throws java.io.IOException {
+  static private void decodeQuantum( char in1, char in2, char in3, char in4,
+          byte[] out, int outOffset ) throws java.io.IOException {
     int a;
     int b;
     int c = 0;

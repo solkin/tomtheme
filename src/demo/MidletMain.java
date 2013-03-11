@@ -13,6 +13,8 @@ import com.tomclaw.tcuilite.ListRmsRenderer;
 import com.tomclaw.tcuilite.Screen;
 import com.tomclaw.tcuilite.Settings;
 import com.tomclaw.tcuilite.smiles.Smiles;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.microedition.midlet.*;
 import javax.microedition.rms.RecordStore;
 import javax.microedition.rms.RecordStoreException;
@@ -29,14 +31,18 @@ public class MidletMain extends MIDlet {
   public static String chatImagesFile = "/res/groups/img_chat.png";
 
   public void startApp() {
-    // prepareListRecordStore();
-    // prepareGroupRecordStore();
-    Smiles.readSmileData( true );
+    try {
+      // prepareListRecordStore();
+      // prepareGroupRecordStore();
+      Smiles.readSmileData( true );
+    } catch ( Throwable ex ) {
+      Logger.getLogger( MidletMain.class.getName() ).log( Level.SEVERE, null, ex );
+    }
     tcuithemesmaker.Logger.println( "images count = "
             + Splitter.splitImage( chatImagesFile ).size );
-    Settings.MENU_DRAW_DIRECTSHADOWS = false;
-    Settings.DIALOG_DRAW_ALPHABACK = false;
-    Settings.DIALOG_DRAW_SHADOWS = false;
+    // Settings.MENU_DRAW_DIRECTSHADOWS = false;
+    // Settings.DIALOG_DRAW_ALPHABACK = false;
+    // Settings.DIALOG_DRAW_SHADOWS = false;
     screen = new Screen( this );
     screen.show();
     mainFrame = new MainFrame( screen );

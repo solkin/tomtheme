@@ -246,7 +246,7 @@ public class MainFrame extends Window {
     TabItem tabItem3 = new TabItem( "Group", 0, -1 );
     TabItem tabItem4 = new TabItem( "Chat", 0, -1 );
     Label tabLabel = new Label("Tab label header");
-    tabLabel.isHeader = true;
+    tabLabel.setHeader(true);
     tabItem4.tabLabel = tabLabel;
 
     tab.addTabItem( tabItem1 );
@@ -290,7 +290,7 @@ public class MainFrame extends Window {
     pane.addItem( plainLabel );
     Label titleLabel = new Label( "Title label" );
     titleLabel.setFocusable( true );
-    titleLabel.isTitle = true;
+    titleLabel.setTitle(true);
     pane.addItem( titleLabel );
 
     for ( int c = 0; c < 4; c++ ) {

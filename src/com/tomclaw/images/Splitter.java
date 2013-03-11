@@ -7,7 +7,7 @@ import javax.microedition.lcdui.Image;
 import javax.microedition.lcdui.game.Sprite;
 
 /**
- * Solkin Igor Viktorovich, TomClaw Software, 2003-2010
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
  * http://www.tomclaw.com/
  * @author Solkin
  */
@@ -39,16 +39,10 @@ public class Splitter {
       tempImage = Image.createImage( fileName );
       /** Creating images group oject **/
       imageGroup.size = tempImage.getHeight();
-      imageGroup.images = new Image[ tempImage.getWidth() / imageGroup.size ];
+      imageGroup.images = tempImage;
       /** Checking and updating maximum image size **/
       if ( isSizeIndex && imageGroup.size > imageMaxSize ) {
         imageMaxSize = imageGroup.size;
-      }
-      /** Cutting images **/
-      for ( int c = 0; c < imageGroup.images.length; c++ ) {
-        imageGroup.images[c] = Image.createImage( tempImage, c * imageGroup.size, 0, imageGroup.size, imageGroup.size, Sprite.TRANS_NONE );
-        // imageGroup.images[c] = new int[imageGroup.size * imageGroup.size];
-        // tempImage.getRGB(imageGroup.images[c], 0, imageGroup.size, c * imageGroup.size, 0, imageGroup.size, imageGroup.size);
       }
       hashtable.put( String.valueOf( fileName.hashCode() ), imageGroup );
     } catch ( IOException ex ) {
@@ -64,16 +58,17 @@ public class Splitter {
    * @param imageIndex
    */
   public static int drawImage( Graphics g, ImageGroup imageGroup, int imageIndex, int x, int y, boolean isYCenter ) {
-    if ( imageIndex >= imageGroup.images.length || imageIndex < 0 ) {
-      return 0;
+    if ( imageIndex < imageGroup.getCount() && imageIndex >= 0 ) {
+      try {
+        g.drawRegion( imageGroup.images, imageIndex * imageGroup.size, 0,
+                imageGroup.size, imageGroup.size, Sprite.TRANS_NONE,
+                x, ( isYCenter ? y - imageGroup.size / 2 : y ),
+                Graphics.TOP | Graphics.LEFT );
+        return imageGroup.size;
+      } catch ( NullPointerException ex1 ) {
+      }
     }
-    try {
-      g.drawImage( imageGroup.images[imageIndex], x, ( isYCenter ? y - imageGroup.size / 2 : y ), Graphics.TOP | Graphics.LEFT );
-      // g.drawRGB(imageGroup.images[imageIndex], 0, imageGroup.size, x, (isYCenter ? y - imageGroup.size / 2 : y), imageGroup.size, imageGroup.size, true);
-    } catch ( NullPointerException ex1 ) {
-      return 0;
-    }
-    return imageGroup.size;
+    return 0;
   }
 
   public static int drawImage( Graphics g, int imageFileHash, int imageIndex, int x, int y, boolean isYCenter ) {
@@ -109,6 +104,5 @@ public class Splitter {
 
   public static ImageGroup getImageGroup( int imageFileHash ) {
     return ( ImageGroup ) hashtable.get( String.valueOf( imageFileHash ) );
-
   }
 }

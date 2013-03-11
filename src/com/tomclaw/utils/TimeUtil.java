@@ -1,12 +1,9 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.tomclaw.utils;
 
 /**
- *
- * @author solkin
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
+ * http://www.tomclaw.com/
+ * @author Solkin
  */
 public class TimeUtil {
 
@@ -17,8 +14,9 @@ public class TimeUtil {
   final public static int TIME_DAY = 3;
   final public static int TIME_MON = 4;
   final public static int TIME_YEAR = 5;
-  final private static byte[] dayCounts = new byte[]{ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
-  public static int gmtOffset = 4;
+  final private static byte[] dayCounts =
+          new byte[]{ 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+  public static int gmtOffset = 4 * 3600;
   public static boolean summerTime = false;
 
   public static long getCurrentTime() {
@@ -29,17 +27,17 @@ public class TimeUtil {
     return getCurrentTime() + getGmtOffset();
   }
 
-  public static long getMentionedTimeGMT(long time) {
+  public static long getMentionedTimeGMT( long time ) {
     return time + getGmtOffset();
   }
 
   public static int getGmtOffset() {
-    return ( gmtOffset + ( summerTime ? 1 : 0 ) ) * 3600;
+    return gmtOffset + ( summerTime ? 1 : 0 ) * 3600;
   }
 
   /* Generates seconds count from 1st Jan 1970 till mentioned date */
-  public static long createTimeLong(int year, int mon, int day, int hour,
-          int min, int sec) {
+  public static long createTimeLong( int year, int mon, int day, int hour,
+          int min, int sec ) {
     int day_count, i, febCount;
 
     day_count = ( year - 1970 ) * 365 + day;
@@ -63,7 +61,7 @@ public class TimeUtil {
   }
 
   // Creates array of calendar values form value of seconds since 1st jan 1970 (GMT)
-  public static int[] createDateArray(long value) {
+  public static int[] createDateArray( long value ) {
     int total_days, last_days, i;
     int sec, min, hour, day, mon, year;
 
@@ -105,7 +103,7 @@ public class TimeUtil {
   }
 
   /** Creates string for time delay **/
-  public static String delayToString(long seconds) {
+  public static String delayToString( long seconds ) {
     StringBuffer buf = new StringBuffer();
     int days = ( int ) ( seconds / 86400 );
     seconds %= 86400;
@@ -130,7 +128,7 @@ public class TimeUtil {
     return buf.toString();
   }
 
-  private static String makeTwo(int number) {
+  private static String makeTwo( int number ) {
     if ( number < 10 ) {
       return ( "0" + String.valueOf( number ) );
     } else {
@@ -139,7 +137,7 @@ public class TimeUtil {
   }
 
   /* Show date string */
-  public static String getDateString(long date, boolean time) {
+  public static String getDateString( long date, boolean time ) {
     if ( date == 0 ) {
       return error_str;
     }
@@ -161,7 +159,7 @@ public class TimeUtil {
   }
 
   /* Show time string */
-  public static String getTimeString(long date, boolean seconds) {
+  public static String getTimeString( long date, boolean seconds ) {
     if ( date == 0 ) {
       return error_str;
     }
@@ -180,7 +178,7 @@ public class TimeUtil {
     return sb.toString();
   }
 
-  public static String getUtcTimeString(long date) {
+  public static String getUtcTimeString( long date ) {
     if ( date == 0 ) {
       return error_str;
     }
@@ -190,8 +188,62 @@ public class TimeUtil {
     StringBuffer sb = new StringBuffer();
 
     sb.append( makeTwo( loclaDate[TIME_YEAR] ) ).append( '-' ).append(
-            makeTwo( loclaDate[TIME_MON] ) ).append( '-' ).append( makeTwo( loclaDate[TIME_DAY] ) ).append( 'T' ).append( makeTwo( loclaDate[TIME_HOUR] ) ).append( ':' ).append( makeTwo( loclaDate[TIME_MINUTE] ) ).append( ':' ).append( makeTwo( loclaDate[TIME_SECOND] ) ).append( 'Z' );
+            makeTwo( loclaDate[TIME_MON] ) ).append( '-' ).
+            append( makeTwo( loclaDate[TIME_DAY] ) ).
+            append( 'T' ).append( makeTwo( loclaDate[TIME_HOUR] ) ).
+            append( ':' ).append( makeTwo( loclaDate[TIME_MINUTE] ) ).
+            append( ':' ).append( makeTwo( loclaDate[TIME_SECOND] ) ).
+            append( 'Z' );
 
     return sb.toString();
+  }
+
+  public static long getUtcTimeLong( String stamp, boolean isLocalized ) {
+    /** Checking input **/
+    if ( !StringUtil.isNullOrEmpty( stamp ) ) {
+      /** Time from stamp by XEP-0082 **/
+      int tIndex = stamp.indexOf( 'T' );
+      /** Checking for date and time **/
+      if ( tIndex != -1 ) {
+        String date = stamp.substring( 0, tIndex );
+        /** Calculating time **/
+        int yIndex = date.indexOf( '-' );
+        int rYears = Integer.parseInt( date.substring( 0, yIndex ) );
+        int mIndex = date.indexOf( '-', yIndex + 1 );
+        int rMonths = Integer.parseInt( date.substring( yIndex + 1, mIndex ) );
+        int rDays = Integer.parseInt( date.substring( mIndex + 1 ) );
+        String time = stamp.substring( tIndex + 1 );
+        int zIndex = Math.max( time.indexOf( '+' ), time.indexOf( '-' ) );
+        zIndex = Math.max( zIndex, time.indexOf( 'Z' ) );
+        /** Checking for time zone **/
+        if ( zIndex != -1 ) {
+          String clearTime = time.substring( 0, zIndex );
+          String timeZone = time.substring( zIndex );
+          /** Calculating time **/
+          int hIndex = clearTime.indexOf( ':' );
+          int rHours = Integer.parseInt( clearTime.substring( 0, hIndex ) );
+          mIndex = clearTime.indexOf( ':', hIndex + 1 );
+          int rMinutes = Integer.parseInt( clearTime.substring( hIndex + 1, mIndex ) );
+          int rSeconds = Integer.parseInt( clearTime.substring( mIndex + 1 ) );
+          long timeLong = TimeUtil.createTimeLong( rYears, rMonths, rDays, rHours, rMinutes, rSeconds );
+          /** Checking for UTC **/
+          if ( !timeZone.equals( "Z" ) && !isLocalized ) {
+            boolean isPlus = ( timeZone.charAt( 0 ) == '+' );
+            int dIndex = timeZone.indexOf( ':' );
+            /** Checking for delimiter **/
+            if ( dIndex != -1 ) {
+              timeLong -= ( ( ( isPlus ? 1 : -1 )
+                      * Integer.parseInt( timeZone.substring( 1, dIndex ) ) ) * 60
+                      + Integer.parseInt( timeZone.substring( dIndex + 1 ) ) ) * 60;
+            }
+          } else {
+            /** Converting to local time **/
+            timeLong += TimeUtil.getGmtOffset();
+          }
+          return timeLong;
+        }
+      }
+    }
+    return 0;
   }
 }

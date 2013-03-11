@@ -1,18 +1,17 @@
 package com.tomclaw.tcuilite;
 
 /**
- * Solkin Igor Viktorovich, TomClaw Software, 2003-2012
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
  * http://www.tomclaw.com/
  * @author Solkin
  */
 public class GroupChild {
 
-  public String name = null;
   /**
    * Main objects
    */
   public String title;
-  public Thread thread;
+  public Runnable runnable;
   /**
    * Conditions
    */
@@ -32,8 +31,8 @@ public class GroupChild {
   }
 
   public void actionPerformed() {
-    if ( thread != null ) {
-      thread.run();
+    if ( runnable != null ) {
+      runnable.run();
     }
   }
 }
