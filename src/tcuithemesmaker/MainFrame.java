@@ -494,10 +494,10 @@ public class MainFrame extends javax.swing.JFrame {
       //    Logger.getLogger(MainFrame.class.getName()).log(Level.SEVERE, null, ex);
       //}
 
-      Displayable.width = (int) jPanel1.getPreferredSize().getWidth();
-      Displayable.height = (int) jPanel1.getPreferredSize().getHeight();
+      Displayable.width = ( int ) jPanel1.getPreferredSize().getWidth();
+      Displayable.height = ( int ) jPanel1.getPreferredSize().getHeight();
       // midlet.mainFrame.paint(new Graphics(jPanel1.getGraphics(),0,0));
-      Display.midletPanel = (MidletPanel) jPanel1;
+      Display.midletPanel = ( MidletPanel ) jPanel1;
       Display.getDisplay( midlet ).getCurrent().callRepaint();
 
       /** Enabling keys **/
@@ -539,7 +539,7 @@ public class MainFrame extends javax.swing.JFrame {
       int seed = 20;
       int tabCount = jTabbedPane1.getTabCount();
       for ( int c = 0; c < tabCount; c++ ) {
-        DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponentAt( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+        DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponentAt( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
         for ( int i = 0; i < model.getRowCount(); i++ ) {
           red = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + red;
           green = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + green;
@@ -574,7 +574,7 @@ public class MainFrame extends javax.swing.JFrame {
       Random random = new Random();
       int red = 128, green = 128, blue = 128;
       int seed = 20;
-      DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+      DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
       for ( int i = 0; i < model.getRowCount(); i++ ) {
         red = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + red;
         green = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + green;
@@ -603,16 +603,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-      DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
-      JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
+      DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+      JTable jTable = ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
       colorBuffer = new java.awt.Color[ jTable.getSelectedRowCount() ];
       for ( int c = 0; c < jTable.getSelectedRowCount(); c++ ) {
-        colorBuffer[c] = (java.awt.Color) model.getValueAt( jTable.getSelectedRow() + c, 1 );
+        colorBuffer[c] = ( java.awt.Color ) model.getValueAt( jTable.getSelectedRow() + c, 1 );
       }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-      JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
+      JTable jTable = ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
       for ( int c = 0; c < colorBuffer.length; c++ ) {
         setColorTo( jTable.getSelectedRow() + c, colorBuffer[c] );
       }
@@ -630,7 +630,7 @@ public class MainFrame extends javax.swing.JFrame {
 
   public void makeScreenShot( String filePath ) {
     try {
-      ImageIO.write( ( (MidletPanel) jPanel1 ).image, "PNG", new File( filePath ) );
+      ImageIO.write( ( ( MidletPanel ) jPanel1 ).image, "PNG", new File( filePath ) );
     } catch ( IOException ex ) {
       Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
     }
@@ -673,9 +673,9 @@ public class MainFrame extends javax.swing.JFrame {
         final javax.swing.JTable jTable1 = new javax.swing.JTable();
         jTable1.setModel( new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
-                new String[]{ "Описание", "Цвет", "Ключ" } ) {
+                new String[]{ "Описание", "Цвет" } ) {
           Class[] types = new Class[]{
-            java.lang.String.class, java.awt.Color.class, java.lang.String.class
+            KeyValue.class, java.awt.Color.class, java.lang.String.class
           };
 
           @Override
@@ -689,7 +689,7 @@ public class MainFrame extends javax.swing.JFrame {
           public void mouseClicked( java.awt.event.MouseEvent evt ) {
             if ( jTable1.getSelectedColumn() == 0x01 ) {
               if ( evt.getClickCount() == 2 ) {
-                ( new ColorChooserDialog( MainFrame.this, true, jTable1.getSelectedRow(), (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ) ).setVisible( true );
+                ( new ColorChooserDialog( MainFrame.this, true, jTable1.getSelectedRow(), ( java.awt.Color ) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ) ).setVisible( true );
               }
             }
           }
@@ -697,13 +697,13 @@ public class MainFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView( jTable1 );
         jTable1.setAutoResizeMode( JTable.AUTO_RESIZE_ALL_COLUMNS );
         // jTable1.getColumnModel().
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel dtm = ( DefaultTableModel ) jTable1.getModel();
         String[] items = dataGear.getItems( groups[c] );
         for ( int i = 0; i < items.length; i++ ) {
           count++;
           Object[] objArr = new Object[]{
-            (String) dataGear.getValue( items[i], groups[c] ),
-            new Color(getColorOf( groups[c], items[i] )), items[i] };
+            new KeyValue( items[i], dataGear.getValue( items[i], groups[c] ) ),
+            new Color( getColorOf( groups[c], items[i] ) ) };
           dtm.addRow( objArr );
         }
       }
@@ -734,12 +734,13 @@ public class MainFrame extends javax.swing.JFrame {
   }
 
   public void setColorTo( int row, java.awt.Color color ) {
-    DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+    DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
     model.setValueAt( color, row, 1 );
     String className = "com.tomclaw.tcuilite."
             + jTabbedPane1.getTitleAt( jTabbedPane1.getSelectedIndex() );
-    String fieldName = ( (String) model.getValueAt( row, 2 ) );
-    int fieldValue = ( (Color) model.getValueAt( row, 1 ) ).getRGB();
+    KeyValue keyValue = (KeyValue) model.getValueAt( row, 0 );
+    String fieldName = keyValue.key;
+    int fieldValue = ( ( Color ) model.getValueAt( row, 1 ) ).getRGB();
     setStaticValue( className, fieldName, fieldValue );
     MidletMain.screen.repaint();
   }
@@ -777,24 +778,24 @@ public class MainFrame extends javax.swing.JFrame {
         type = c + 1;
         dos2.writeInt( type );
         intCount++;
-        DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+        DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
         dos2.writeInt( model.getRowCount() );
         intCount++;
         System.out.println( "# type: " + type + " size: " + model.getRowCount() );
-        System.out.println("["+jTabbedPane1.getTitleAt( c ) + "]");
+        System.out.println( "[" + jTabbedPane1.getTitleAt( c ) + "]" );
         for ( int i = 0; i < model.getRowCount(); i++ ) {
           count++;
           // System.out.println( c + ", " + i );
           int colorRGB = 0;
           try {
-            java.awt.Color color = (java.awt.Color) model.getValueAt( i, 1 );
+            java.awt.Color color = ( java.awt.Color ) model.getValueAt( i, 1 );
             colorRGB = color.getRGB();
           } catch ( Throwable ex ) {
-            Integer color = (Integer) model.getValueAt( i, 1 );
+            Integer color = ( Integer ) model.getValueAt( i, 1 );
             colorRGB = color.intValue();
           }
           dos2.writeInt( colorRGB );
-          System.out.println(model.getValueAt( i, 2 ) + "=" + colorRGB );
+          System.out.println( model.getValueAt( i, 2 ) + "=" + colorRGB );
           intCount++;
         }
       }
@@ -834,7 +835,7 @@ public class MainFrame extends javax.swing.JFrame {
         if ( load_ver == 1 ) {
           int tabCount = jTabbedPane1.getTabCount();
           for ( int c = 0; c < tabCount; c++ ) {
-            DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+            DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
             for ( int i = 0; i < model.getRowCount(); i++ ) {
               count++;
               // System.out.println(c + ", " + i);
@@ -851,7 +852,7 @@ public class MainFrame extends javax.swing.JFrame {
           for ( int c = 0; c < tabCount; c++ ) {
             int type = dis.readInt() - 1;
             System.out.println( "[r] type: " + type );
-            DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+            DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
             int size = dis.readInt();
             System.out.println( "[r] type: " + type + " size: " + size );
             for ( int i = 0; i < size; i++ ) {
@@ -869,7 +870,7 @@ public class MainFrame extends javax.swing.JFrame {
           for ( int c = 0; c < tabCount; c++ ) {
             int type = dis.readInt() - 1;
             System.out.println( "[r] type: " + type );
-            DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+            DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
             int size = dis.readInt();
             System.out.println( "[r] type: " + type + " size: " + size );
             for ( int i = 0; i < size; i++ ) {
