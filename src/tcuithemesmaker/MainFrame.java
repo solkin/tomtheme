@@ -673,9 +673,9 @@ public class MainFrame extends javax.swing.JFrame {
         final javax.swing.JTable jTable1 = new javax.swing.JTable();
         jTable1.setModel( new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
-                new String[]{ "Описание", "Цвет", "Ключ" } ) {
+                new String[]{ "Описание", "Цвет" } ) {
           Class[] types = new Class[]{
-            java.lang.String.class, java.awt.Color.class, java.lang.String.class
+            KeyValue.class, java.awt.Color.class, java.lang.String.class
           };
 
           @Override
@@ -688,7 +688,7 @@ public class MainFrame extends javax.swing.JFrame {
           @Override
           public void mouseClicked( java.awt.event.MouseEvent evt ) {
             if ( jTable1.getSelectedColumn() == 0x01 ) {
-              System.out.println("Color: " + Long.toString(0x1000000+( (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() )).getRGB(), 10) );
+              System.out.println( "Color: " + Long.toString( 0x1000000 + ( (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ).getRGB(), 10 ) );
               if ( evt.getClickCount() == 2 ) {
                 ( new ColorChooserDialog( MainFrame.this, true, jTable1.getSelectedRow(), (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ) ).setVisible( true );
               }
@@ -703,8 +703,8 @@ public class MainFrame extends javax.swing.JFrame {
         for ( int i = 0; i < items.length; i++ ) {
           count++;
           Object[] objArr = new Object[]{
-            (String) dataGear.getValue( items[i], groups[c] ),
-            new Color( getColorOf( groups[c], items[i] ) ), items[i] };
+            new KeyValue( items[i], dataGear.getValue( items[i], groups[c] ) ),
+            new Color( getColorOf( groups[c], items[i] ) ) };
           dtm.addRow( objArr );
         }
       }
@@ -739,8 +739,9 @@ public class MainFrame extends javax.swing.JFrame {
     model.setValueAt( color, row, 1 );
     String className = "com.tomclaw.tcuilite."
             + jTabbedPane1.getTitleAt( jTabbedPane1.getSelectedIndex() );
-    String fieldName = ( (String) model.getValueAt( row, 2 ) );
-    int fieldValue = 0x1000000+( (Color) model.getValueAt( row, 1 ) ).getRGB();
+    KeyValue keyValue = (KeyValue) model.getValueAt( row, 0 );
+    String fieldName = keyValue.key;
+    int fieldValue = 0x1000000 + ( (Color) model.getValueAt( row, 1 ) ).getRGB();
     setStaticValue( className, fieldName, fieldValue );
     MidletMain.screen.repaint();
   }
@@ -789,13 +790,13 @@ public class MainFrame extends javax.swing.JFrame {
           int colorRGB = 0;
           try {
             java.awt.Color color = (java.awt.Color) model.getValueAt( i, 1 );
-            colorRGB = 0x1000000+color.getRGB();
+            colorRGB = 0x1000000 + color.getRGB();
           } catch ( Throwable ex ) {
             Integer color = (Integer) model.getValueAt( i, 1 );
             colorRGB = color.intValue();
           }
           dos2.writeInt( colorRGB );
-          System.out.println( model.getValueAt( i, 2 ) + "=" + colorRGB );
+          System.out.println( ( (KeyValue) model.getValueAt( i, 0 ) ).key + "=" + colorRGB );
           intCount++;
         }
       }
@@ -919,12 +920,6 @@ public class MainFrame extends javax.swing.JFrame {
    * @param args the command line arguments
    */
   public static void main( String args[] ) {
-    // shadowColor: 657930
-    // shadowColor: -16119286
-    int a = getColorOf( "Popup", "shadowColor" );
-    int b = (new Color(a)).getRGB();
-    System.out.println( Long.toString( a, 16 ) );
-    System.out.println( Long.toString( 0x1000000+b, 16 ) );
     java.awt.EventQueue.invokeLater( new Runnable() {
       @Override
       public void run() {
