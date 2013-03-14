@@ -688,6 +688,7 @@ public class MainFrame extends javax.swing.JFrame {
           @Override
           public void mouseClicked( java.awt.event.MouseEvent evt ) {
             if ( jTable1.getSelectedColumn() == 0x01 ) {
+              System.out.println("Color: " + Long.toString(0x1000000+( (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() )).getRGB(), 10) );
               if ( evt.getClickCount() == 2 ) {
                 ( new ColorChooserDialog( MainFrame.this, true, jTable1.getSelectedRow(), (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ) ).setVisible( true );
               }
@@ -703,7 +704,7 @@ public class MainFrame extends javax.swing.JFrame {
           count++;
           Object[] objArr = new Object[]{
             (String) dataGear.getValue( items[i], groups[c] ),
-            new Color(getColorOf( groups[c], items[i] )), items[i] };
+            new Color( getColorOf( groups[c], items[i] ) ), items[i] };
           dtm.addRow( objArr );
         }
       }
@@ -722,7 +723,7 @@ public class MainFrame extends javax.swing.JFrame {
     // openTheme( "./tcuilite_def.tt3" );
   }
 
-  public int getColorOf( String className, String fieldName ) {
+  public static int getColorOf( String className, String fieldName ) {
     try {
       Class clazz = Class.forName( "com.tomclaw.tcuilite." + className );
       int color = clazz.getField( fieldName ).getInt( null );
@@ -739,7 +740,7 @@ public class MainFrame extends javax.swing.JFrame {
     String className = "com.tomclaw.tcuilite."
             + jTabbedPane1.getTitleAt( jTabbedPane1.getSelectedIndex() );
     String fieldName = ( (String) model.getValueAt( row, 2 ) );
-    int fieldValue = ( (Color) model.getValueAt( row, 1 ) ).getRGB();
+    int fieldValue = 0x1000000+( (Color) model.getValueAt( row, 1 ) ).getRGB();
     setStaticValue( className, fieldName, fieldValue );
     MidletMain.screen.repaint();
   }
@@ -781,20 +782,20 @@ public class MainFrame extends javax.swing.JFrame {
         dos2.writeInt( model.getRowCount() );
         intCount++;
         System.out.println( "# type: " + type + " size: " + model.getRowCount() );
-        System.out.println("["+jTabbedPane1.getTitleAt( c ) + "]");
+        System.out.println( "[" + jTabbedPane1.getTitleAt( c ) + "]" );
         for ( int i = 0; i < model.getRowCount(); i++ ) {
           count++;
           // System.out.println( c + ", " + i );
           int colorRGB = 0;
           try {
             java.awt.Color color = (java.awt.Color) model.getValueAt( i, 1 );
-            colorRGB = color.getRGB();
+            colorRGB = 0x1000000+color.getRGB();
           } catch ( Throwable ex ) {
             Integer color = (Integer) model.getValueAt( i, 1 );
             colorRGB = color.intValue();
           }
           dos2.writeInt( colorRGB );
-          System.out.println(model.getValueAt( i, 2 ) + "=" + colorRGB );
+          System.out.println( model.getValueAt( i, 2 ) + "=" + colorRGB );
           intCount++;
         }
       }
@@ -858,7 +859,10 @@ public class MainFrame extends javax.swing.JFrame {
               count++;
               int colorRGB = dis.readInt();
               java.awt.Color color = new java.awt.Color( colorRGB );
-              model.setValueAt( color, i, 1 );
+              try {
+                model.setValueAt( color, i, 1 );
+              } catch ( Throwable ex ) {
+              }
             }
           }
         } else if ( load_ver == 3 ) {
@@ -915,6 +919,12 @@ public class MainFrame extends javax.swing.JFrame {
    * @param args the command line arguments
    */
   public static void main( String args[] ) {
+    // shadowColor: 657930
+    // shadowColor: -16119286
+    int a = getColorOf( "Popup", "shadowColor" );
+    int b = (new Color(a)).getRGB();
+    System.out.println( Long.toString( a, 16 ) );
+    System.out.println( Long.toString( 0x1000000+b, 16 ) );
     java.awt.EventQueue.invokeLater( new Runnable() {
       @Override
       public void run() {
