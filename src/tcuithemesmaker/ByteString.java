@@ -1,16 +1,16 @@
 package tcuithemesmaker;
 
 /**
- * Solkin Igor Viktorovich, TomClaw Software, 2003-2010
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
  * http://www.tomclaw.com/
- * @author Игорь
+ * @author Solkin
  */
 public class ByteString {
 
-  public byte[] byteString = new byte[] {};
+  public byte[] byteString = new byte[]{};
 
   public ByteString() {
-    this.byteString = new byte[] {};
+    this.byteString = new byte[]{};
   }
 
   public ByteString( byte[] byteString ) {

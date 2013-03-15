@@ -1,22 +1,20 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tcuithemesmaker;
 
 /**
- *
- * @author i.solkin
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
+ * http://www.tomclaw.com/
+ * @author Solkin
  */
 public class KeyValue extends Object {
+
   public String key;
   public String value;
-  
-  public KeyValue(String key, String value) {
-    this.key=  key;
+
+  public KeyValue( String key, String value ) {
+    this.key = key;
     this.value = value;
   }
-  
+
   @Override
   public String toString() {
     return value;

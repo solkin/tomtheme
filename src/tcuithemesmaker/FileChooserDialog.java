@@ -1,15 +1,11 @@
-/*
- * FileChooserDialog.java
- *
- * Created on 02.07.2011, 13:20:51
- */
 package tcuithemesmaker;
 
 import java.io.File;
 
 /**
- *
- * @author Игорь
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
+ * http://www.tomclaw.com/
+ * @author Solkin
  */
 public class FileChooserDialog extends javax.swing.JDialog {
 
@@ -17,16 +13,16 @@ public class FileChooserDialog extends javax.swing.JDialog {
   public static final int MODE_SAVE = 0x01;
   public static final int MODE_SCRN = 0x02;
   public int mode;
-  public String defaultFileName = "";
+  public File file;
 
   /** Creates new form FileChooserDialog */
-  public FileChooserDialog( java.awt.Frame parent, boolean modal, int mode, String defaultFileName ) {
+  public FileChooserDialog( java.awt.Frame parent, boolean modal, int mode, File file ) {
     super( parent, modal );
-    this.defaultFileName = defaultFileName;
+    this.file = file;
     this.mode = mode;
     initComponents();
-    if ( defaultFileName != null ) {
-      jFileChooser1.setSelectedFile( new File( defaultFileName ) );
+    if ( file != null ) {
+      jFileChooser1.setSelectedFile( file );
     }
     setLocationRelativeTo( null );
   }
@@ -68,9 +64,9 @@ public class FileChooserDialog extends javax.swing.JDialog {
     private void jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFileChooser1ActionPerformed
       if ( evt.getActionCommand().equals( "ApproveSelection" ) ) {
         if ( mode == MODE_OPEN ) {
-          MainFrame.mainFrame.openTheme( jFileChooser1.getSelectedFile().getPath() );
+          MainFrame.mainFrame.openTheme( jFileChooser1.getSelectedFile() );
         } else if ( mode == MODE_SAVE ) {
-          MainFrame.mainFrame.saveTheme( jFileChooser1.getSelectedFile().getPath() );
+          MainFrame.mainFrame.saveTheme( jFileChooser1.getSelectedFile() );
         } else if ( mode == MODE_SCRN ) {
           MainFrame.mainFrame.makeScreenShot( jFileChooser1.getSelectedFile().getPath() );
         }

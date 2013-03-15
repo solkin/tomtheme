@@ -6,8 +6,9 @@ import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
 /**
- *
- * @author Игорь
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
+ * http://www.tomclaw.com/
+ * @author Solkin
  */
 public class ColorChooserTableRenderer extends JLabel implements TableCellRenderer {
 

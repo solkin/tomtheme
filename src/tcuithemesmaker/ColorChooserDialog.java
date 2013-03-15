@@ -1,13 +1,9 @@
-/*
- * ColorChooserDialog.java
- *
- * Created on 27.05.2011, 15:41:46
- */
 package tcuithemesmaker;
 
 /**
- *
- * @author solkin
+ * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
+ * http://www.tomclaw.com/
+ * @author Solkin
  */
 public class ColorChooserDialog extends javax.swing.JDialog {
 
@@ -86,7 +82,8 @@ public class ColorChooserDialog extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-      MainFrame.mainFrame.setColorTo( row, jColorChooser1.getSelectionModel().getSelectedColor() );
+      MainFrame.mainFrame.setColorTo( row,
+              jColorChooser1.getSelectionModel().getSelectedColor() );
       dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
     // Variables declaration - do not modify//GEN-BEGIN:variables
