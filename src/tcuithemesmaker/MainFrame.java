@@ -893,6 +893,8 @@ public class MainFrame extends javax.swing.JFrame {
         Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
       }
     }
+    /** After all apply changes in any case **/
+    applyChanges();
   }
 
   public void setStaticValue( String className, String fieldName, Object value ) {
