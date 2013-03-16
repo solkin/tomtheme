@@ -487,9 +487,9 @@ public class MainFrame extends javax.swing.JFrame {
       MidletMain midlet = new MidletMain();
       midlet.startApp();
 
-      Displayable.width = ( int ) jPanel1.getPreferredSize().getWidth();
-      Displayable.height = ( int ) jPanel1.getPreferredSize().getHeight();
-      Display.midletPanel = ( MidletPanel ) jPanel1;
+      Displayable.width = (int) jPanel1.getPreferredSize().getWidth();
+      Displayable.height = (int) jPanel1.getPreferredSize().getHeight();
+      Display.midletPanel = (MidletPanel) jPanel1;
       Display.getDisplay( midlet ).getCurrent().callRepaint();
 
       /** Enabling keys **/
@@ -534,7 +534,7 @@ public class MainFrame extends javax.swing.JFrame {
       int seed = 20;
       int tabCount = jTabbedPane1.getTabCount();
       for ( int c = 0; c < tabCount; c++ ) {
-        DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1
+        DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
                 .getComponentAt( c ) ).getComponent( 0 ) )
                 .getComponent( 0 ) ).getModel();
         for ( int i = 0; i < model.getRowCount(); i++ ) {
@@ -570,7 +570,7 @@ public class MainFrame extends javax.swing.JFrame {
       Random random = new Random();
       int red = 128, green = 128, blue = 128;
       int seed = 20;
-      DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1
+      DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
               .getSelectedComponent() ).getComponent( 0 ) )
               .getComponent( 0 ) ).getModel();
       for ( int i = 0; i < model.getRowCount(); i++ ) {
@@ -601,16 +601,16 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton15ActionPerformed
 
     private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-      DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
-      JTable jTable = ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
+      DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+      JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
       colorBuffer = new java.awt.Color[ jTable.getSelectedRowCount() ];
       for ( int c = 0; c < jTable.getSelectedRowCount(); c++ ) {
-        colorBuffer[c] = ( java.awt.Color ) model.getValueAt( jTable.getSelectedRow() + c, 1 );
+        colorBuffer[c] = (java.awt.Color) model.getValueAt( jTable.getSelectedRow() + c, 1 );
       }
     }//GEN-LAST:event_jButton16ActionPerformed
 
     private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-      JTable jTable = ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
+      JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
       for ( int c = 0; c < colorBuffer.length; c++ ) {
         setColorTo( jTable.getSelectedRow() + c, colorBuffer[c] );
       }
@@ -628,7 +628,7 @@ public class MainFrame extends javax.swing.JFrame {
 
   public void makeScreenShot( String filePath ) {
     try {
-      ImageIO.write( ( ( MidletPanel ) jPanel1 ).image, "PNG", new File( filePath ) );
+      ImageIO.write( ( (MidletPanel) jPanel1 ).image, "PNG", new File( filePath ) );
     } catch ( IOException ex ) {
       Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
     }
@@ -685,17 +685,17 @@ public class MainFrame extends javax.swing.JFrame {
           @Override
           public void mouseClicked( java.awt.event.MouseEvent evt ) {
             if ( jTable1.getSelectedColumn() == 0x01 ) {
-              System.out.println( "Color: " + Long.toString( 0x1000000 + ( ( java.awt.Color ) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ).getRGB(), 10 ) );
+              System.out.println( "Color: " + Long.toString( 0x1000000 + ( (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ).getRGB(), 10 ) );
               if ( evt.getClickCount() == 2 ) {
-                ( new ColorChooserDialog( MainFrame.this, true, jTable1.getSelectedRow(), ( java.awt.Color ) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ) ).setVisible( true );
+                ( new ColorChooserDialog( MainFrame.this, true, jTable1.getSelectedRow(), (java.awt.Color) jTable1.getModel().getValueAt( jTable1.getSelectedRow(), jTable1.getSelectedColumn() ) ) ).setVisible( true );
               }
             }
           }
         } );
         jScrollPane1.setViewportView( jTable1 );
         jTable1.setAutoResizeMode( JTable.AUTO_RESIZE_ALL_COLUMNS );
-        
-        DefaultTableModel dtm = ( DefaultTableModel ) jTable1.getModel();
+
+        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
         String[] items = dataGear.getItems( groups[c] );
         for ( int i = 0; i < items.length; i++ ) {
           count++;
@@ -720,6 +720,70 @@ public class MainFrame extends javax.swing.JFrame {
     // openTheme( "./tcuilite_def.tt3" );
   }
 
+  public final void importTheme( DataInputStream themeDis ) {
+    DataInputStream desrDis = null;
+    INIGear dataGear = new INIGear();
+    try {
+      desrDis = new java.io.DataInputStream( new java.io.FileInputStream(
+              new java.io.File( "./theme2.ini" ) ) );
+      byte[] aByte = new byte[ 1024 ];
+      int read;
+      ByteString bs = new ByteString();
+      while ( ( read = desrDis.read( aByte ) ) != -1 ) {
+        bs.append( aByte, 0, read );
+      }
+      dataGear.setStructure( bs.byteString );
+      String[] groups = dataGear.getHeaders();
+
+      int intCount = themeDis.readInt();
+      System.out.println( "[i] intCount: " + intCount );
+      int tabCount = themeDis.readInt();
+      System.out.println( "[i] tabCount: " + tabCount );
+      for ( int c = 0; c < tabCount; c++ ) {
+        int type = themeDis.readInt() - 1;
+        int size = themeDis.readInt();
+        System.out.println( "[i] type: " + type + " size: " + size );
+        String className = groups[type];
+        System.out.println( "[i] className: " + className );
+        String[] fields = dataGear.getItems( className );
+        for ( int i = 0; i < size; i++ ) {
+          int colorRGB = themeDis.readInt();
+          // java.awt.Color color = new java.awt.Color( colorRGB );
+          System.out.println( "[i] fieldName: " + fields[i] );
+          try {
+            setStaticValue( tcuiPackage + className, fields[i], colorRGB );
+          } catch ( Throwable ex ) {
+            System.err.println( "[i] field not found: " + className + "." + fields[i] );
+          }
+        }
+      }
+      System.out.println( "[i] complete." );
+    } catch ( IOException ex ) {
+      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+    } catch ( Throwable ex ) {
+      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+    } finally {
+      try {
+        desrDis.close();
+      } catch ( IOException ex ) {
+        Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+      }
+    }
+  }
+
+  public void updateTable() {
+    int tabCount = jTabbedPane1.getTabCount();
+    for ( int c = 0; c < tabCount; c++ ) {
+      DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+      for ( int i = 0; i < model.getRowCount(); i++ ) {
+        String className = jTabbedPane1.getTitleAt( c );
+        String fieldName = ( (KeyValue) model.getValueAt( i, 0 ) ).key;
+        java.awt.Color color = new java.awt.Color( getColorOf( className, fieldName ) );
+        model.setValueAt( color, i, 1 );
+      }
+    }
+  }
+
   public static int getColorOf( String className, String fieldName ) {
     try {
       Class clazz = Class.forName( tcuiPackage + className );
@@ -732,14 +796,17 @@ public class MainFrame extends javax.swing.JFrame {
   }
 
   public void setColorTo( int row, java.awt.Color color ) {
-    DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+    DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
     model.setValueAt( color, row, 1 );
     String className = tcuiPackage
             + jTabbedPane1.getTitleAt( jTabbedPane1.getSelectedIndex() );
-    KeyValue keyValue = ( KeyValue ) model.getValueAt( row, 0 );
+    KeyValue keyValue = (KeyValue) model.getValueAt( row, 0 );
     String fieldName = keyValue.key;
-    int fieldValue = 0x1000000 + ( ( Color ) model.getValueAt( row, 1 ) ).getRGB();
-    setStaticValue( className, fieldName, fieldValue );
+    int fieldValue = 0x1000000 + ( (Color) model.getValueAt( row, 1 ) ).getRGB();
+    try {
+      setStaticValue( className, fieldName, fieldValue );
+    } catch ( Throwable ex ) {
+    }
     MidletMain.screen.repaint();
   }
 
@@ -777,7 +844,7 @@ public class MainFrame extends javax.swing.JFrame {
         type = c + 1;
         dos2.writeInt( type );
         intCount++;
-        DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+        DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
         dos2.writeInt( model.getRowCount() );
         intCount++;
         System.out.println( "# type: " + type + " size: " + model.getRowCount() );
@@ -786,14 +853,14 @@ public class MainFrame extends javax.swing.JFrame {
           count++;
           int colorRGB = 0;
           try {
-            java.awt.Color color = ( java.awt.Color ) model.getValueAt( i, 1 );
+            java.awt.Color color = (java.awt.Color) model.getValueAt( i, 1 );
             colorRGB = 0x1000000 + color.getRGB();
           } catch ( Throwable ex ) {
-            Integer color = ( Integer ) model.getValueAt( i, 1 );
+            Integer color = (Integer) model.getValueAt( i, 1 );
             colorRGB = color.intValue();
           }
           dos2.writeInt( colorRGB );
-          System.out.println( ( ( KeyValue ) model.getValueAt( i, 0 ) ).key + "=" + colorRGB );
+          System.out.println( ( (KeyValue) model.getValueAt( i, 0 ) ).key + "=" + colorRGB );
           intCount++;
         }
       }
@@ -831,38 +898,10 @@ public class MainFrame extends javax.swing.JFrame {
         title = dis.readUTF();
         author = dis.readUTF();
         if ( load_ver == 1 ) {
-          int tabCount = jTabbedPane1.getTabCount();
-          for ( int c = 0; c < tabCount; c++ ) {
-            DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( c ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
-            for ( int i = 0; i < model.getRowCount(); i++ ) {
-              count++;
-              // System.out.println(c + ", " + i);
-              int colorRGB = dis.readInt();
-              java.awt.Color color = new java.awt.Color( colorRGB );
-              model.setValueAt( color, i, 1 );
-            }
-          }
+          javax.swing.JOptionPane.showMessageDialog( null, "Данный формат тем более не поддерживается.");
         } else if ( load_ver == 2 ) {
-          int intCount = dis.readInt();
-          System.out.println( "[r] intCount: " + intCount );
-          int tabCount = dis.readInt();
-          System.out.println( "[r] tabCount: " + tabCount );
-          for ( int c = 0; c < tabCount; c++ ) {
-            int type = dis.readInt() - 1;
-            System.out.println( "[r] type: " + type );
-            DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
-            int size = dis.readInt();
-            System.out.println( "[r] type: " + type + " size: " + size );
-            for ( int i = 0; i < size; i++ ) {
-              count++;
-              int colorRGB = dis.readInt();
-              java.awt.Color color = new java.awt.Color( colorRGB );
-              try {
-                model.setValueAt( color, i, 1 );
-              } catch ( Throwable ex ) {
-              }
-            }
-          }
+          importTheme( dis );
+          updateTable();
         } else if ( load_ver == 3 ) {
           int intCount = dis.readInt();
           System.out.println( "[r] intCount: " + intCount );
@@ -871,7 +910,7 @@ public class MainFrame extends javax.swing.JFrame {
           for ( int c = 0; c < tabCount; c++ ) {
             int type = dis.readInt() - 1;
             System.out.println( "[r] type: " + type );
-            DefaultTableModel model = ( DefaultTableModel ) ( ( JTable ) ( ( javax.swing.JViewport ) ( ( JScrollPane ) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+            DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getComponent( type ) ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
             int size = dis.readInt();
             System.out.println( "[r] type: " + type + " size: " + size );
             for ( int i = 0; i < size; i++ ) {
@@ -883,6 +922,7 @@ public class MainFrame extends javax.swing.JFrame {
           }
         }
         System.out.println( "Fields read: " + count );
+        applyChanges();
       }
     } catch ( IOException ex ) {
       Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
@@ -893,26 +933,12 @@ public class MainFrame extends javax.swing.JFrame {
         Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
       }
     }
-    /** After all apply changes in any case **/
-    applyChanges();
   }
 
-  public void setStaticValue( String className, String fieldName, Object value ) {
-    try {
-      Class clazz = Class.forName( className );
-      Field field = clazz.getField( fieldName );
-      field.set( null, value );
-    } catch ( ClassNotFoundException ex ) {
-      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
-    } catch ( NoSuchFieldException ex ) {
-      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
-    } catch ( SecurityException ex ) {
-      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
-    } catch ( IllegalArgumentException ex ) {
-      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
-    } catch ( IllegalAccessException ex ) {
-      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
-    }
+  public void setStaticValue( String className, String fieldName, Object value ) throws Throwable {
+    Class clazz = Class.forName( className );
+    Field field = clazz.getField( fieldName );
+    field.set( null, value );
   }
 
   /**
