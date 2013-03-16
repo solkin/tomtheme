@@ -19,6 +19,7 @@ import javax.imageio.ImageIO;
 import javax.microedition.lcdui.Canvas;
 import javax.microedition.lcdui.Display;
 import javax.microedition.lcdui.Displayable;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.UIManager;
@@ -79,14 +80,32 @@ public class MainFrame extends javax.swing.JFrame {
     jButton18 = new javax.swing.JButton();
     jSeparator2 = new javax.swing.JToolBar.Separator();
     jButton13 = new javax.swing.JButton();
-    jButton14 = new javax.swing.JButton();
-    jButton15 = new javax.swing.JButton();
-    jSeparator3 = new javax.swing.JToolBar.Separator();
     jButton16 = new javax.swing.JButton();
     jButton17 = new javax.swing.JButton();
     jSeparator4 = new javax.swing.JToolBar.Separator();
     jButton19 = new javax.swing.JButton();
     jTabbedPane1 = new javax.swing.JTabbedPane();
+    jMenuBar1 = new javax.swing.JMenuBar();
+    jMenu1 = new javax.swing.JMenu();
+    jMenuItem1 = new javax.swing.JMenuItem();
+    jMenuItem2 = new javax.swing.JMenuItem();
+    jMenuItem3 = new javax.swing.JMenuItem();
+    jSeparator5 = new javax.swing.JPopupMenu.Separator();
+    jMenuItem9 = new javax.swing.JMenuItem();
+    jMenuItem4 = new javax.swing.JMenuItem();
+    jSeparator6 = new javax.swing.JPopupMenu.Separator();
+    jMenuItem5 = new javax.swing.JMenuItem();
+    jMenu2 = new javax.swing.JMenu();
+    jMenuItem6 = new javax.swing.JMenuItem();
+    jMenuItem7 = new javax.swing.JMenuItem();
+    jSeparator7 = new javax.swing.JPopupMenu.Separator();
+    jMenuItem8 = new javax.swing.JMenuItem();
+    jMenu3 = new javax.swing.JMenu();
+    jMenuItem12 = new javax.swing.JMenuItem();
+    jMenuItem10 = new javax.swing.JMenuItem();
+    jMenuItem11 = new javax.swing.JMenuItem();
+    jMenu4 = new javax.swing.JMenu();
+    jMenuItem13 = new javax.swing.JMenuItem();
 
     setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     setTitle("TomClaw TomTheme");
@@ -257,7 +276,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.setRollover(true);
 
     jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_create.png"))); // NOI18N
-    jButton1.setText("Создать");
     jButton1.setFocusable(false);
     jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -269,7 +287,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.add(jButton1);
 
     jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_open.png"))); // NOI18N
-    jButton11.setText("Открыть");
     jButton11.setFocusable(false);
     jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton11.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -281,7 +298,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.add(jButton11);
 
     jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_save.png"))); // NOI18N
-    jButton12.setText("Сохранить");
     jButton12.setFocusable(false);
     jButton12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton12.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -293,7 +309,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.add(jButton12);
 
     jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_info.png"))); // NOI18N
-    jButton18.setText("Инфо о теме");
     jButton18.setFocusable(false);
     jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton18.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -306,7 +321,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.add(jSeparator2);
 
     jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_refresh.png"))); // NOI18N
-    jButton13.setText("Применить");
     jButton13.setFocusable(false);
     jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton13.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -317,33 +331,7 @@ public class MainFrame extends javax.swing.JFrame {
     });
     jToolBar4.add(jButton13);
 
-    jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/omg_rand_thm.png"))); // NOI18N
-    jButton14.setText("Случайная тема");
-    jButton14.setFocusable(false);
-    jButton14.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-    jButton14.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-    jButton14.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton14ActionPerformed(evt);
-      }
-    });
-    jToolBar4.add(jButton14);
-
-    jButton15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/omg_rand_comp.png"))); // NOI18N
-    jButton15.setText("Случайный компонент");
-    jButton15.setFocusable(false);
-    jButton15.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-    jButton15.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-    jButton15.addActionListener(new java.awt.event.ActionListener() {
-      public void actionPerformed(java.awt.event.ActionEvent evt) {
-        jButton15ActionPerformed(evt);
-      }
-    });
-    jToolBar4.add(jButton15);
-    jToolBar4.add(jSeparator3);
-
     jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_copy.png"))); // NOI18N
-    jButton16.setText("Копировать");
     jButton16.setFocusable(false);
     jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton16.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -355,7 +343,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.add(jButton16);
 
     jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_paste.png"))); // NOI18N
-    jButton17.setText("Вставить");
     jButton17.setFocusable(false);
     jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton17.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -368,7 +355,6 @@ public class MainFrame extends javax.swing.JFrame {
     jToolBar4.add(jSeparator4);
 
     jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tcuithemesmaker/icons/img_shot.png"))); // NOI18N
-    jButton19.setText("Скриншот");
     jButton19.setFocusable(false);
     jButton19.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
     jButton19.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -378,6 +364,140 @@ public class MainFrame extends javax.swing.JFrame {
       }
     });
     jToolBar4.add(jButton19);
+
+    jMenu1.setText("Файл");
+
+    jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_N, java.awt.event.InputEvent.ALT_MASK));
+    jMenuItem1.setText("Создать");
+    jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem1ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem1);
+
+    jMenuItem2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_O, java.awt.event.InputEvent.ALT_MASK));
+    jMenuItem2.setText("Открыть...");
+    jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem2ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem2);
+
+    jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.ALT_MASK));
+    jMenuItem3.setText("Сохранить...");
+    jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem3ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem3);
+    jMenu1.add(jSeparator5);
+
+    jMenuItem9.setText("Скриншот...");
+    jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem9ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem9);
+
+    jMenuItem4.setText("Информация");
+    jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem4ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem4);
+    jMenu1.add(jSeparator6);
+
+    jMenuItem5.setText("Выход");
+    jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem5ActionPerformed(evt);
+      }
+    });
+    jMenu1.add(jMenuItem5);
+
+    jMenuBar1.add(jMenu1);
+
+    jMenu2.setText("Правка");
+
+    jMenuItem6.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_C, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem6.setText("Копировать");
+    jMenuItem6.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem6ActionPerformed(evt);
+      }
+    });
+    jMenu2.add(jMenuItem6);
+
+    jMenuItem7.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_V, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem7.setText("Вставить");
+    jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem7ActionPerformed(evt);
+      }
+    });
+    jMenu2.add(jMenuItem7);
+    jMenu2.add(jSeparator7);
+
+    jMenuItem8.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_A, java.awt.event.InputEvent.SHIFT_MASK | java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem8.setText("Применить");
+    jMenuItem8.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem8ActionPerformed(evt);
+      }
+    });
+    jMenu2.add(jMenuItem8);
+
+    jMenuBar1.add(jMenu2);
+
+    jMenu3.setText("Генерация");
+
+    jMenuItem12.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_Q, java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem12.setText("Случайный цвет");
+    jMenuItem12.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem12ActionPerformed(evt);
+      }
+    });
+    jMenu3.add(jMenuItem12);
+
+    jMenuItem10.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_W, java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem10.setText("Случайный компонент");
+    jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem10ActionPerformed(evt);
+      }
+    });
+    jMenu3.add(jMenuItem10);
+
+    jMenuItem11.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_E, java.awt.event.InputEvent.CTRL_MASK));
+    jMenuItem11.setText("Случайная тема");
+    jMenuItem11.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem11ActionPerformed(evt);
+      }
+    });
+    jMenu3.add(jMenuItem11);
+
+    jMenuBar1.add(jMenu3);
+
+    jMenu4.setText("Справка");
+
+    jMenuItem13.setText("О программе...");
+    jMenuItem13.addActionListener(new java.awt.event.ActionListener() {
+      public void actionPerformed(java.awt.event.ActionEvent evt) {
+        jMenuItem13ActionPerformed(evt);
+      }
+    });
+    jMenu4.add(jMenuItem13);
+
+    jMenuBar1.add(jMenu4);
+
+    setJMenuBar(jMenuBar1);
 
     javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
     getContentPane().setLayout(layout);
@@ -413,8 +533,8 @@ public class MainFrame extends javax.swing.JFrame {
             .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
             .addComponent(jToolBar3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-          .addComponent(jSeparator1, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
-          .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
+          .addComponent(jSeparator1)
+          .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE))
         .addContainerGap())
     );
 
@@ -484,24 +604,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-      MidletMain midlet = new MidletMain();
-      midlet.startApp();
-
-      Displayable.width = (int) jPanel1.getPreferredSize().getWidth();
-      Displayable.height = (int) jPanel1.getPreferredSize().getHeight();
-      Display.midletPanel = (MidletPanel) jPanel1;
-      Display.getDisplay( midlet ).getCurrent().callRepaint();
-
-      /** Enabling keys **/
-      jButton2.setEnabled( true );
-      jButton3.setEnabled( true );
-      jButton4.setEnabled( true );
-      jButton5.setEnabled( true );
-      jButton6.setEnabled( true );
-      jButton7.setEnabled( true );
-      jButton8.setEnabled( true );
-      jButton10.setEnabled( true );
-
+      initEmulator();
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
@@ -510,7 +613,7 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-      ( new FileChooserDialog( this, true, FileChooserDialog.MODE_OPEN, file ) ).setVisible( true );
+      openTheme();
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
@@ -518,60 +621,138 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton12ActionPerformed
-      ( new FileChooserDialog( this, true, FileChooserDialog.MODE_SAVE, file ) ).setVisible( true );
+      saveTheme();
     }//GEN-LAST:event_jButton12ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      loadTable();
-      openTheme( new File( "./tcuilite_def.tt3" ) );
-      applyChanges();
-      file = null;
+      createTheme();
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton14ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton14ActionPerformed
-      Random random = new Random();
-      int red = 128, green = 128, blue = 128;
-      int seed = 20;
-      int tabCount = jTabbedPane1.getTabCount();
-      for ( int c = 0; c < tabCount; c++ ) {
-        DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
-                .getComponentAt( c ) ).getComponent( 0 ) )
-                .getComponent( 0 ) ).getModel();
-        for ( int i = 0; i < model.getRowCount(); i++ ) {
-          red = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + red;
-          green = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + green;
-          blue = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + blue;
-          if ( red > 255 ) {
-            red = 255;
-          }
-          if ( green > 255 ) {
-            green = 255;
-          }
-          if ( blue > 255 ) {
-            blue = 255;
-          }
-          if ( red < 0 ) {
-            red = 0;
-          }
-          if ( green < 0 ) {
-            green = 0;
-          }
-          if ( blue < 0 ) {
-            blue = 0;
-          }
-          System.out.println( red + ", " + green + ", " + blue );
-          model.setValueAt( new Color( red, green, blue ), i, 1 );
-        }
-      }
-      applyChanges();
-    }//GEN-LAST:event_jButton14ActionPerformed
+    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
+      copySelected();
+    }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton15ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton15ActionPerformed
-      Random random = new Random();
-      int red = 128, green = 128, blue = 128;
-      int seed = 20;
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+      pasteSelected();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
+    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton18ActionPerformed
+    {//GEN-HEADEREND:event_jButton18ActionPerformed
+      showInfo();
+    }//GEN-LAST:event_jButton18ActionPerformed
+
+  private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
+    makeScreenshot();
+  }//GEN-LAST:event_jButton19ActionPerformed
+
+  private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    openTheme();
+  }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+  private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+    createTheme();
+  }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+  private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
+    makeScreenshot();
+  }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+  private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    showInfo();
+  }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+  private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+    dispose();
+  }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+  private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
+    copySelected();
+  }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+  private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+    pasteSelected();
+  }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+  private void jMenuItem8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem8ActionPerformed
+    applyChanges();
+  }//GEN-LAST:event_jMenuItem8ActionPerformed
+
+  private void jMenuItem11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem11ActionPerformed
+    generateTheme();
+  }//GEN-LAST:event_jMenuItem11ActionPerformed
+
+  private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    generateComponent();
+  }//GEN-LAST:event_jMenuItem10ActionPerformed
+
+  private void jMenuItem12ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem12ActionPerformed
+    generateItem();
+  }//GEN-LAST:event_jMenuItem12ActionPerformed
+
+  private void jMenuItem13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem13ActionPerformed
+    JOptionPane.showMessageDialog( null, "TomTheme - TCUI color themes interactive editor\nTomClaw Software, 2003-2013" );
+  }//GEN-LAST:event_jMenuItem13ActionPerformed
+
+  private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    saveTheme();
+  }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+  public void createTheme() {
+    loadTable();
+    openTheme( new File( "./tcuilite_def.tt3" ) );
+    applyChanges();
+    file = null;
+  }
+
+  public void openTheme() {
+    ( new FileChooserDialog( this, true, FileChooserDialog.MODE_OPEN, file ) ).setVisible( true );
+  }
+
+  public void saveTheme() {
+    ( new FileChooserDialog( this, true, FileChooserDialog.MODE_SAVE, file ) ).setVisible( true );
+  }
+
+  public void makeScreenshot() {
+    ( new FileChooserDialog( this, true, FileChooserDialog.MODE_SCRN, null ) ).setVisible( true );
+  }
+
+  public void makeScreenShot( String filePath ) {
+    try {
+      ImageIO.write( ( (MidletPanel) jPanel1 ).image, "PNG", new File( filePath ) );
+    } catch ( IOException ex ) {
+      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+    }
+  }
+
+  public void showInfo() {
+    ThemeInfo themeInfo = new ThemeInfo( this, true );
+    themeInfo.setVisible( true );
+  }
+
+  public void copySelected() {
+    DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
+    JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
+    colorBuffer = new java.awt.Color[ jTable.getSelectedRowCount() ];
+    for ( int c = 0; c < jTable.getSelectedRowCount(); c++ ) {
+      colorBuffer[c] = (java.awt.Color) model.getValueAt( jTable.getSelectedRow() + c, 1 );
+    }
+  }
+
+  public void pasteSelected() {
+    JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
+    for ( int c = 0; c < colorBuffer.length; c++ ) {
+      setColorTo( jTable.getSelectedRow() + c, colorBuffer[c] );
+    }
+  }
+
+  public void generateTheme() {
+    Random random = new Random();
+    int red = 128, green = 128, blue = 128;
+    int seed = 20;
+    int tabCount = jTabbedPane1.getTabCount();
+    for ( int c = 0; c < tabCount; c++ ) {
       DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
-              .getSelectedComponent() ).getComponent( 0 ) )
+              .getComponentAt( c ) ).getComponent( 0 ) )
               .getComponent( 0 ) ).getModel();
       for ( int i = 0; i < model.getRowCount(); i++ ) {
         red = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + red;
@@ -595,43 +776,82 @@ public class MainFrame extends javax.swing.JFrame {
         if ( blue < 0 ) {
           blue = 0;
         }
+        System.out.println( red + ", " + green + ", " + blue );
         model.setValueAt( new Color( red, green, blue ), i, 1 );
       }
-      applyChanges();
-    }//GEN-LAST:event_jButton15ActionPerformed
-
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-      DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) ).getModel();
-      JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
-      colorBuffer = new java.awt.Color[ jTable.getSelectedRowCount() ];
-      for ( int c = 0; c < jTable.getSelectedRowCount(); c++ ) {
-        colorBuffer[c] = (java.awt.Color) model.getValueAt( jTable.getSelectedRow() + c, 1 );
-      }
-    }//GEN-LAST:event_jButton16ActionPerformed
-
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-      JTable jTable = ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1.getSelectedComponent() ).getComponent( 0 ) ).getComponent( 0 ) );
-      for ( int c = 0; c < colorBuffer.length; c++ ) {
-        setColorTo( jTable.getSelectedRow() + c, colorBuffer[c] );
-      }
-    }//GEN-LAST:event_jButton17ActionPerformed
-
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_jButton18ActionPerformed
-    {//GEN-HEADEREND:event_jButton18ActionPerformed
-      ThemeInfo themeInfo = new ThemeInfo( this, true );
-      themeInfo.setVisible( true );
-    }//GEN-LAST:event_jButton18ActionPerformed
-
-  private void jButton19ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton19ActionPerformed
-    ( new FileChooserDialog( this, true, FileChooserDialog.MODE_SCRN, null ) ).setVisible( true );
-  }//GEN-LAST:event_jButton19ActionPerformed
-
-  public void makeScreenShot( String filePath ) {
-    try {
-      ImageIO.write( ( (MidletPanel) jPanel1 ).image, "PNG", new File( filePath ) );
-    } catch ( IOException ex ) {
-      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
     }
+    applyChanges();
+  }
+
+  public void generateComponent() {
+    Random random = new Random();
+    int red = 128, green = 128, blue = 128;
+    int seed = 20;
+    DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
+            .getSelectedComponent() ).getComponent( 0 ) )
+            .getComponent( 0 ) ).getModel();
+    for ( int i = 0; i < model.getRowCount(); i++ ) {
+      red = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + red;
+      green = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + green;
+      blue = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + blue;
+      if ( red > 255 ) {
+        red = 255;
+      }
+      if ( green > 255 ) {
+        green = 255;
+      }
+      if ( blue > 255 ) {
+        blue = 255;
+      }
+      if ( red < 0 ) {
+        red = 0;
+      }
+      if ( green < 0 ) {
+        green = 0;
+      }
+      if ( blue < 0 ) {
+        blue = 0;
+      }
+      model.setValueAt( new Color( red, green, blue ), i, 1 );
+    }
+    applyChanges();
+  }
+
+  public void generateItem() {
+    Random random = new Random();
+    int red = 128, green = 128, blue = 128;
+    int seed = 20;
+    DefaultTableModel model = (DefaultTableModel) ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
+            .getSelectedComponent() ).getComponent( 0 ) )
+            .getComponent( 0 ) ).getModel();
+    int selectedIndex = ( ( (JTable) ( (javax.swing.JViewport) ( (JScrollPane) jTabbedPane1
+            .getSelectedComponent() ).getComponent( 0 ) )
+            .getComponent( 0 ) ) ).getSelectedRow();
+    {
+      red = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + red;
+      green = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + green;
+      blue = ( random.nextBoolean() ? 1 : -1 ) * random.nextInt( seed ) + blue;
+      if ( red > 255 ) {
+        red = 255;
+      }
+      if ( green > 255 ) {
+        green = 255;
+      }
+      if ( blue > 255 ) {
+        blue = 255;
+      }
+      if ( red < 0 ) {
+        red = 0;
+      }
+      if ( green < 0 ) {
+        green = 0;
+      }
+      if ( blue < 0 ) {
+        blue = 0;
+      }
+      model.setValueAt( new Color( red, green, blue ), selectedIndex, 1 );
+    }
+    applyChanges();
   }
 
   public void applyChanges() {
@@ -640,6 +860,26 @@ public class MainFrame extends javax.swing.JFrame {
     int[] data = Theme.loadTheme( new DataInputStream( bais ) );
     Theme.applyData( data );
     MidletMain.screen.repaint();
+  }
+
+  public void initEmulator() {
+    MidletMain midlet = new MidletMain();
+    midlet.startApp();
+
+    Displayable.width = (int) jPanel1.getPreferredSize().getWidth();
+    Displayable.height = (int) jPanel1.getPreferredSize().getHeight();
+    Display.midletPanel = (MidletPanel) jPanel1;
+    Display.getDisplay( midlet ).getCurrent().callRepaint();
+
+    /** Enabling keys **/
+    jButton2.setEnabled( true );
+    jButton3.setEnabled( true );
+    jButton4.setEnabled( true );
+    jButton5.setEnabled( true );
+    jButton6.setEnabled( true );
+    jButton7.setEnabled( true );
+    jButton8.setEnabled( true );
+    jButton10.setEnabled( true );
   }
 
   public final void loadTable() {
@@ -898,7 +1138,7 @@ public class MainFrame extends javax.swing.JFrame {
         title = dis.readUTF();
         author = dis.readUTF();
         if ( load_ver == 1 ) {
-          javax.swing.JOptionPane.showMessageDialog( null, "Данный формат тем более не поддерживается.");
+          javax.swing.JOptionPane.showMessageDialog( null, "Данный формат тем более не поддерживается." );
         } else if ( load_ver == 2 ) {
           importTheme( dis );
           updateTable();
@@ -951,10 +1191,6 @@ public class MainFrame extends javax.swing.JFrame {
         /*try {
          UIManager.setLookAndFeel( UIManager.getSystemLookAndFeelClassName() );
          } catch ( Throwable ex ) {
-         }
-         try {
-         UIManager.setLookAndFeel( "com.sun.java.swing.plaf.gtk.GTKLookAndFeel" );
-         } catch ( Throwable ex ) {
          }*/
         try {
           // UIManager.setLookAndFeel( "com.lipstikLF.LipstikLookAndFeel" );
@@ -963,6 +1199,7 @@ public class MainFrame extends javax.swing.JFrame {
         }
         mainFrame = new MainFrame();
         mainFrame.setVisible( true );
+        mainFrame.initEmulator();
       }
     } );
   }
@@ -972,8 +1209,6 @@ public class MainFrame extends javax.swing.JFrame {
   private javax.swing.JButton jButton11;
   private javax.swing.JButton jButton12;
   private javax.swing.JButton jButton13;
-  private javax.swing.JButton jButton14;
-  private javax.swing.JButton jButton15;
   private javax.swing.JButton jButton16;
   private javax.swing.JButton jButton17;
   private javax.swing.JButton jButton18;
@@ -986,11 +1221,31 @@ public class MainFrame extends javax.swing.JFrame {
   private javax.swing.JButton jButton7;
   private javax.swing.JButton jButton8;
   private javax.swing.JButton jButton9;
+  private javax.swing.JMenu jMenu1;
+  private javax.swing.JMenu jMenu2;
+  private javax.swing.JMenu jMenu3;
+  private javax.swing.JMenu jMenu4;
+  private javax.swing.JMenuBar jMenuBar1;
+  private javax.swing.JMenuItem jMenuItem1;
+  private javax.swing.JMenuItem jMenuItem10;
+  private javax.swing.JMenuItem jMenuItem11;
+  private javax.swing.JMenuItem jMenuItem12;
+  private javax.swing.JMenuItem jMenuItem13;
+  private javax.swing.JMenuItem jMenuItem2;
+  private javax.swing.JMenuItem jMenuItem3;
+  private javax.swing.JMenuItem jMenuItem4;
+  private javax.swing.JMenuItem jMenuItem5;
+  private javax.swing.JMenuItem jMenuItem6;
+  private javax.swing.JMenuItem jMenuItem7;
+  private javax.swing.JMenuItem jMenuItem8;
+  private javax.swing.JMenuItem jMenuItem9;
   private javax.swing.JPanel jPanel1;
   private javax.swing.JSeparator jSeparator1;
   private javax.swing.JToolBar.Separator jSeparator2;
-  private javax.swing.JToolBar.Separator jSeparator3;
   private javax.swing.JToolBar.Separator jSeparator4;
+  private javax.swing.JPopupMenu.Separator jSeparator5;
+  private javax.swing.JPopupMenu.Separator jSeparator6;
+  private javax.swing.JPopupMenu.Separator jSeparator7;
   private javax.swing.JTabbedPane jTabbedPane1;
   private javax.swing.JToolBar jToolBar1;
   private javax.swing.JToolBar jToolBar2;

@@ -1,6 +1,7 @@
 package tcuithemesmaker;
 
 import java.io.File;
+import javax.swing.JFileChooser;
 
 /**
  * Solkin Igor Viktorovich, TomClaw Software, 2003-2013
@@ -9,9 +10,9 @@ import java.io.File;
  */
 public class FileChooserDialog extends javax.swing.JDialog {
 
-  public static final int MODE_OPEN = 0x00;
-  public static final int MODE_SAVE = 0x01;
-  public static final int MODE_SCRN = 0x02;
+  public static final int MODE_OPEN = JFileChooser.OPEN_DIALOG;
+  public static final int MODE_SAVE = JFileChooser.SAVE_DIALOG;
+  public static final int MODE_SCRN = JFileChooser.SAVE_DIALOG;
   public int mode;
   public File file;
 
@@ -24,6 +25,7 @@ public class FileChooserDialog extends javax.swing.JDialog {
     if ( file != null ) {
       jFileChooser1.setSelectedFile( file );
     }
+    jFileChooser1.setDialogType( mode );
     setLocationRelativeTo( null );
   }
 
@@ -51,11 +53,11 @@ public class FileChooserDialog extends javax.swing.JDialog {
     getContentPane().setLayout(layout);
     layout.setHorizontalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 492, Short.MAX_VALUE)
     );
     layout.setVerticalGroup(
       layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-      .addComponent(jFileChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+      .addComponent(jFileChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
     );
 
     pack();
