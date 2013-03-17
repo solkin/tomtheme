@@ -42,8 +42,8 @@ public class Label extends PaneObject {
       g.setColor( focusedBackColor );
       g.fillRect( x + 3, y + 3, width - 5, height - 5 );
     } else if ( isHeader ) {
-      DrawUtil.fillVerticalGradient( g, x, y, width, height, headerGradFrom,
-              headerGradTo );
+      DrawUtil.fillVerticalGradient( g, x, y, width + 1, height, 
+              headerGradFrom, headerGradTo );
       g.setColor( headerHr );
       g.drawLine( x, y + height - 1, x + width, y + height - 1 );
     }

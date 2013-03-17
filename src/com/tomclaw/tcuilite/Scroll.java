@@ -52,4 +52,8 @@ public abstract class Scroll extends GObject {
       }
     }
   }
+  
+  public int getTotalHeight() {
+    return totalHeight;
+  }
 }

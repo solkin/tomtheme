@@ -103,8 +103,8 @@ public final class Dialog {
   }
 
   public final void initImageGraphics( int width, int height ) {
-    strings = StringUtil.wrapText( message, width - Theme.upSize * 2 - shadowSize * 2, Theme.titleFont );
     this.width = width * 4 / 5;
+    strings = StringUtil.wrapText( message, this.width - Theme.upSize * 2 - 2 * 2, Theme.titleFont );
     if ( height * 4 / 5 < strings.length * textFontHeight ) {
       this.height = height * 4 / 5;
     } else {
