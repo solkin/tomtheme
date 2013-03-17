@@ -959,6 +959,53 @@ public class MainFrame extends javax.swing.JFrame {
     }
     // openTheme( "./tcuilite_def.tt3" );
   }
+  
+  public final void importLegacyTheme( DataInputStream themeDis ) {
+    DataInputStream desrDis = null;
+    INIGear dataGear = new INIGear();
+    try {
+      desrDis = new java.io.DataInputStream( new java.io.FileInputStream(
+              new java.io.File( "./theme1.ini" ) ) );
+      byte[] aByte = new byte[ 1024 ];
+      int read;
+      ByteString bs = new ByteString();
+      while ( ( read = desrDis.read( aByte ) ) != -1 ) {
+        bs.append( aByte, 0, read );
+      }
+      dataGear.setStructure( bs.byteString );
+      String[] groups = dataGear.getHeaders();
+
+      int tabCount = groups.length;
+      System.out.println( "[i] tabCount: " + tabCount );
+      for ( int c = 0; c < tabCount; c++ ) {
+        int type = c;
+        int size = dataGear.getItems( groups[c] ).length;
+        String className = groups[type];
+        System.out.println( "[i] className: " + className );
+        String[] fields = dataGear.getItems( className );
+        for ( int i = 0; i < size; i++ ) {
+          int colorRGB = themeDis.readInt();
+          System.out.println( "[i] fieldName: " + fields[i] );
+          try {
+            setStaticValue( tcuiPackage + className, fields[i], colorRGB );
+          } catch ( Throwable ex ) {
+            System.err.println( "[i] field not found: " + className + "." + fields[i] );
+          }
+        }
+      }
+      System.out.println( "[i] complete." );
+    } catch ( IOException ex ) {
+      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+    } catch ( Throwable ex ) {
+      Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+    } finally {
+      try {
+        desrDis.close();
+      } catch ( IOException ex ) {
+        Logger.getLogger( MainFrame.class.getName() ).log( Level.SEVERE, null, ex );
+      }
+    }
+  }
 
   public final void importTheme( DataInputStream themeDis ) {
     DataInputStream desrDis = null;
@@ -1138,7 +1185,8 @@ public class MainFrame extends javax.swing.JFrame {
         title = dis.readUTF();
         author = dis.readUTF();
         if ( load_ver == 1 ) {
-          javax.swing.JOptionPane.showMessageDialog( null, "Данный формат тем более не поддерживается." );
+          importLegacyTheme( dis );
+          updateTable();
         } else if ( load_ver == 2 ) {
           importTheme( dis );
           updateTable();

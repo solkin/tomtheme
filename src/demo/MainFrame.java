@@ -337,7 +337,7 @@ public class MainFrame extends Window {
     pane.setTouchOrientation( false );
 
     for ( int c = 0; c < 24; c++ ) {
-      ChatItem chatItem = new ChatItem( chat, "362540754", "Solkin", "15.12 23:" 
+      ChatItem chatItem = new ChatItem( chat, "7068514", "Solkin", "15.12 23:" 
               + c, ChatItem.TYPE_PLAIN_MSG, "[p]dfsdf[br/]Message Text Here."
               + "[br/]May be, not only text[smile="+c+"/], here can be smiles!"
               + "[smile="+(24-c)+"/][/p]" );
