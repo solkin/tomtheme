@@ -38,7 +38,7 @@ public class MidletMain extends MIDlet {
     } catch ( Throwable ex ) {
       Logger.getLogger( MidletMain.class.getName() ).log( Level.SEVERE, null, ex );
     }
-    tcuithemesmaker.Logger.println( "images count = "
+    System.out.println( "images count = "
             + Splitter.splitImage( chatImagesFile ).size );
     // Settings.MENU_DRAW_DIRECTSHADOWS = false;
     // Settings.DIALOG_DRAW_ALPHABACK = false;

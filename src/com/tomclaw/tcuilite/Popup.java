@@ -80,7 +80,9 @@ public class Popup extends Scroll {
     if ( Settings.MENU_DRAW_ALPHABACK ) {
       g.drawImage( back, x, y, Graphics.TOP | Graphics.LEFT );
     } else {
-      DrawUtil.fillVerticalGradient( g, paintX + x + 1, paintY + y + 1, width - 2 - repaintScrollWidth, height - 1, backGradFrom, backGradTo );
+      DrawUtil.fillVerticalGradient( g, paintX + x + 1, paintY + y + 1, 
+              width - 1 - repaintScrollWidth, height - 1, 
+              backGradFrom, backGradTo );
       g.setColor( scrollBorder );
       g.drawRect( paintX + x, paintY + y, width, height - 1 );
     }
