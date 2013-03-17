@@ -1,7 +1,7 @@
 TomTheme
 ========
 
-TCUI Themes editor (draft state)
+TCUI color themes editor
 
 Screenshot
 ----------
